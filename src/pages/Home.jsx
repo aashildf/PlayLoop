@@ -1,3 +1,6 @@
+
+// "Status: Header/Footer er placeholders. Rutingen er ikke helt ferdig koblet mot Home ennå. Spør Lene Renate om main.jsx er klar."*
+
 import Hero from "../components/Hero";
 import Gamecard from "../components/GameCard";
 
