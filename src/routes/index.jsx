@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import MemoryGame from "../mia/MemoryGame";
+import MemoryGame from "../mia/MemoryGame.jsx";
 
 export const router = createBrowserRouter([
   {
