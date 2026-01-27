@@ -1,4 +1,3 @@
-import "./styles/memory.css";
 
 function MemoryGame() {
   return (
