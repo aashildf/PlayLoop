@@ -1,11 +1,10 @@
 
 .memory-header {
-    background-color: red;
+    background-color: rgb(98, 91, 91);
     width: 500px;
     height: 100px;
 }
 
-
-h1{
+h3{
     color: white;
 }
