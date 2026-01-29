@@ -1,7 +1,7 @@
-export default function Home() {
+export default function TestPage() {
   return (
     <>
-      <h1 style={{ color: "green" }}>HOME</h1>
+      <h1 style={{ color: "green" }}>TESTING testing .. . </h1>
     </>
   );
 }
