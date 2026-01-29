@@ -1,7 +1,6 @@
 import { useState } from "react";
-import "./styles/memory.css";
 import cardData from "./data/cardData.js";
-import {shuffle} from "./utils/shuffle.js";
+import { shuffle } from "./utils/shuffle.js";
 
 function MemoryGame() {
   const [cards, setCards] = useState(() => {
@@ -9,32 +8,43 @@ function MemoryGame() {
     return shuffle(doubledCards);
   });
 
-
   return (
-    <>
-      <section className="memory-container">
-        <header className="memory-header">
-          <h3>Memory game under produksjon</h3>
+    // wrapper to center the content
+    <div className="flex justify-center">
+      {/* memory container */}
+      <article className="flex flex-col items-center">
+        <header className="mb-6 text-center">
+          <h3 className="text-xl font-semibold">
+            Memory game under produksjon
+          </h3>
         </header>
-        <section className="game-board">
+        {/* Game board */}
+        <div className="grid grid-cols-4 gap-4">
           {cards.map((card, index) => (
-            <div
-              key={index}
-              className="w-[180px] h-[200px] perspective-[1000px]"
-            >
+            <div key={index} className="w-45 h-50 perspective-[1000px]">
               <div className="w-full h-full relative">
+                {/* Card front */}
                 <div className="absolute w-full h-full top-0 left-0">
-                  <img src={card.image} alt={card.id} />
+                  <img
+                    src={card.image}
+                    alt={card.id}
+                    className="w-full h-full object-cover rounded-lg"
+                  />
                 </div>
+                {/* Card back */}
                 <div className="absolute w-full h-full top-0 left-0">
-                  <img src="/mia-images/bakside1.jpg" alt="Card back" className="w-full h-full object-cover rounded-lg" />
+                  <img
+                    src="/mia-images/bakside1.jpg"
+                    alt="Card back"
+                    className="w-full h-full object-cover rounded-lg"
+                  />
                 </div>
               </div>
             </div>
           ))}
-        </section>
-      </section>
-    </>
+        </div>
+      </article>
+    </div>
   );
 }
 
