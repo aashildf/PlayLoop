@@ -28,7 +28,7 @@ function MemoryGame() {
       setFlippedIndices([...flippedIndices, index]);
     }
   }
-
+ 
   /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     if (flippedIndices.length !== 2) return;
