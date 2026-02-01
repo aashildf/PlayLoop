@@ -2,19 +2,21 @@
 
 import Hero from "../components/Hero";
 import GameCard from "../components/GameCard";
+import cowboyEmoji from "../assets/Cowboyemoji.json";
 
 export default function Home() {
   const games = [
     {
       id: 1,
-      title: "Mia-sitt-spill",
-      image: "/bilde1.jpg",
+      title: "MEMORYGAME",
+      image: "/2d-cowboy-emoji.png",
+      lottieJson: cowboyEmoji,
       description: " ",
       path: "memorygame",
     },
     {
       id: 2,
-      title: "Therese-sitt-spill",
+      title: "REACTIONGAME",
       image: "/bilde2.jpg",
       description: " ",
       path: "reactiongame",
@@ -34,6 +36,7 @@ export default function Home() {
             title={game.title}
             description={game.description}
             image={game.image}
+            lottieJson={game.lottieJson}
           />
         ))}
       </section>
