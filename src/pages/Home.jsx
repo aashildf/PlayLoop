@@ -2,6 +2,7 @@ import Hero from "../components/Hero";
 import GameCard from "../components/GameCard";
 import cowboyEmoji from "../assets/Cowboyemoji.json";
 
+
 export default function Home() {
   const games = [
     {
@@ -22,12 +23,14 @@ export default function Home() {
   ];
 
   return (
-    <div style={mainContentStyle}>
+    <div className="max-w-7xl mx-auto px-5 brick-pattern min-h-screen">
       <Hero />
-      <h2 style={{ textAlign: "center", margin: "40px 0" }}>Våre Spill</h2>
+      <h2 className="text-center my-10 font-display text-3xl text-primary uppercase italic tracking-widest">
+        Våre Spill
+      </h2>
 
       {/* Grid som viser spill-kortene */}
-      <section style={gridStyle}>
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-20">
         {games.map((game) => (
           <GameCard
             key={game.id}
@@ -35,6 +38,7 @@ export default function Home() {
             description={game.description}
             image={game.image}
             lottieJson={game.lottieJson}
+            path={game.path}
           />
         ))}
       </section>
@@ -42,14 +46,4 @@ export default function Home() {
   );
 }
 
-const mainContentStyle = {
-  maxWidth: "1200px",
-  margin: "0 auto",
-  padding: "20px",
-};
 
-const gridStyle = {
-  display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-  gap: "20px",
-};
