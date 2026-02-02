@@ -1,81 +1,158 @@
 
 /* eslint-disable no-unused-vars */
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, useSpring} from "framer-motion";
 import { Link } from "react-router-dom";
 import Lottie from "lottie-react";
 import { useState} from "react";
 
 
 
-export default function GameCard({ title, image, path, lottieJson, isPrimary }) {
-  const [isHovered, setIsHovered] = useState(false);
+export default function GameCard({ title, image, path, lottieJson}) {const [isHovered, setIsHovered] = useState(false);
+
+  // PARALLAX EFFEKT: 3D
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+ 
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["20deg", "-20deg"]);
+    const rotateY = useTransform(
+      mouseXSpring,
+      [-0.5, 0.5],
+      ["-20deg", "20deg"]);
+    
+
+    const handleMouseMove = (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      x.set((e.clientX - rect.left) / rect.width - 0.5);
+      y.set((e.clientY - rect.top) / rect.height - 0.5);
+    };
+
+
 
   return (
-    <div className="relative group p-4">
-   
+    <div
+      className="py-24 flex justify-center items-center"
+      style={{ perspective: "1500px" }}
+    >
       <motion.div
-        className="relative overflow-hidden cursor-pointer border-4 border-black rounded-sm flex flex-col items-center `min-h-150`"
+        onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        whileHover={{
-          scale: 1.02,
+        onMouseLeave={() => {
+          x.set(0);
+          y.set(0);
+          setIsHovered(false);
         }}
-        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        style={{
+          rotateX,
+          rotateY,
+          transformStyle: "preserve-3d",
+          backgroundColor: "#EAE3D6",
+        }}
+        className="relative w-[400px] h-[580px] rounded-[40px] flex flex-col items-center shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-visible cursor-pointer border border-black/5"
       >
-        {/* Sjakkmønster på gamecard*/}
-        <div className="absolute inset-0 z-0 opacity-100 checkerboard-pattern pointer-events-none"></div>
+        {/* NEON - GLOW UNDER KORTET*/}
+        <div
+          className="absolute -inset-20  blur-[100px] rounded-full opacity-60 pointer-events-none -z-50"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(59,130,246,0.6) 0%, rgba(236,72,153,0.6) 50%, rgba(0,0,0,0) 100%)",
+            transform: "translateZ(-80px) translateY(20px)",
+          }}
+        />
 
-        {/* inner-ramme*/}
-        <div className="relative z-10 m-14 grow w-full h-full flex flex-col items-center p-6 bg-white border-[6px] border-black shadow-[8px_8px_0px_rgba(0,0,0,0.15)]">
-          {/* Bilde/emoji-område*/}
-          <div className="grow flex justify-center items-center relative w-full mt-4">
+        {/* PAPIR-TEKSTUR  */}
+        <div
+          className="absolute inset-0 rounded-[40px] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden border border-black/5"
+          style={{
+            // PAPIR-BILDE-BAKGRUNN
+            backgroundImage: `url('paper2.jpg')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundColor: "#EAE3D6", // Fallback hvis bildet ikke laster
+          }}
+        >
+          {/* selve papirfibrene */}
+          <div
+            className="absolute inset-0 opacity-[0.3] mix-blend-multiply"
+            style={{
+              backgroundImage: `url('https://www.transparenttextures.com/patterns/cardboard-flat.png')`,
+            }}
+          >
+            {/*  subtilt lag over bildet for å gi det litt mer "dybde" */}
+            <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.1)] pointer-events-none" />
+          </div>
+
+          {/* vignett/skitten kant */}
+          <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]" />
+        </div>
+
+
+        {/* BILDET/  */}
+        <div
+          className="flex-1 flex justify-center items-center  w-full pt-12"
+          style={{ transform: "translateZ(100px)" }}
+        >
+          <motion.div
+            animate={{
+              y: [0, -15, 0],
+              filter: isHovered
+                ? "drop-shadow(0 30px 40px rgba(0,0,0,0.4))"
+                : "drop-shadow(0 15px 15px rgba(0,0,0,0.2))",
+            }}
+            transition={{
+              y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+            }}
+          >
             {isHovered && lottieJson ? (
-              <motion.div className="w-56 z-10">
+              <div className="w-72">
                 <Lottie animationData={lottieJson} loop={true} />
-              </motion.div>
+              </div>
             ) : (
-              <motion.img
-                src={image}
-                alt={title}
-                className="w-48 drop-shadow-2xl z-10"
-                animate={{ y: [0, -10, 0] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
+              <img src={image} className="w-64 drop-shadow-2xl" alt={title} />
             )}
-          </div>
+          </motion.div>
+        </div>
 
-          {/* Spilltittel */}
-          <div className="relative z-30 -mb-12 mt-2">
-            <h2
-              className="font-neon leading-[0.8] text-center"
-              style={{ color: "#E0748F" }}
-            >
-              <span className="block text-6xl drop-shadow-[4px_4px_0px_white] filter drop-shadow(4px 4px 0px black)">
-                Memory
-              </span>
-              <span className="block text-5xl ml-10 drop-shadow-[4px_4px_0px_white] filter drop-shadow(4px 4px 0px black)">
-                Game
-              </span>
-            </h2>
-          </div>
+        {/* TITTEL - ()Mellomnivå dybde)*/}
+        <div
+          className="relative z-20 mb-28"
+          style={{ transform: "translateZ(60px)" }}
+        >
+          <h2
+            className="font-sans font-bold text-center leading-[0.8] italic tracking-tight text-white"
+            style={{
+              fontSize: "76px",
+              WebkitTextStroke: "1px #E0748F",
+              textShadow: `
+        -4px -4px 0 #E0748F, 4px -4px 0 #E0748F,
+                -4px 4px 0 #E0748F, 4px 4px 0 #E0748F,
+                12px 12px 25px rgba(0,0,0,0.3)`,
+            }}
+          >
+            <span className="block">Memory</span>
+            <span className="block ml-10" style={{ fontSize: "66px" }}>
+              Game
+            </span>
+          </h2>
+        </div>
 
-          {/* Rosa skillelinje under tittelen */}
-          <div className="h-1.5 w-1/2 bg-[#E0748F] mt-12 border-b-2 border-black"></div>
-
-
-          {/* tekst nederst */}
+        {/* tekst nederst */}
+        {/* <div className="relative z-10 pb-24 text-center">
           <div className="text-black font-retro text-sm mt-4 text-center leading-tight uppercase opacity-70">
             Limited Edition Arcade Series <br />© 1984 Playloop Computing
           </div>
+        </div> */}
 
-          {/* Play-knapp */}
+        {/* PLAY NOW- knapp */}
+        <div
+          className="absolute bottom-10"
+          style={{ transform: "translateZ(40px)" }}
+        >
           <Link
             to={path}
-            className="mt-6 font-retro text-2xl py-2 px-12 text-white bg-[#E0748F] border-2 border-black shadow-[4px_4px_0px_black] hover:shadow-[2px_2px_0px_black] `hover:translate-y-0.5` transition-all duration-200 active:translate-y-1"
+            className="py-4 px-12 text-white font-black bg-[#E0748F] rounded-full border-b-[6px] border-pink-900 shadow-[0_10px_30px_rgba(224,116,143,0.4)] hover:brightness-110 active:border-b-0 `active:translate-y-1.5` transition-all tracking-widest"
           >
             PLAY NOW
           </Link>
