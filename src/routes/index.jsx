@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../pages/Home";
-import MemoryGame from "../Mia/MemoryGame";
+import MemoryGame from "../mia/MemoryGame";
 import ReactionGame from "../Therese/ReactionGame";
 import TestPage from "../LeneRenate/TestPage";
 

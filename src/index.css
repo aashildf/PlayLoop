@@ -1,1 +1,78 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap');
+
+
+
+
+
+
+/* Animasjon for blinking */
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+    20%, 22%, 24%, 55% { opacity: 0.4; }
+}
+.animate-flicker {
+    animation: flicker 2s infinite; 
+}
+
+/* Farger og glød til "Neonskilt/header" */
+@layer components {
+    .neon-text-pink {
+        text-shadow: 0 0 5px #fff, 0 0 10px #f0f, 0 0 20px #f0f;
+    }
+    .neon-text-cyan {
+        text-shadow: 0 0 5px #fff, 0 0 10px #00f2ff, 0 0 20px #00f2ff;
+    }
+    .arcade-screen-glow {
+        box-shadow: inset 0 0 20px rgba(0, 242, 255, 0.5), 0 0 15px rgba(0, 242, 255, 0.3);
+    }
+
+    /* Slik at ikke tailwind overkjører fonten der den brukes */
+    .font-fredoka {
+        font-family: 'Fredoka', sans-serif;
+    }
+
+    .font-montserrat {
+        font-family: 'Montserrat', sans-serif;
+    }
+
+
+    /* Bakgrunnsmønster, Bricks */
+    .brick-pattern {
+        background-color: #0a0a12;
+    background-image: 
+      linear-gradient(#1a1a2e 1.5px, transparent 1.5px), 
+      linear-gradient(90deg, #1a1a2e 1.5px, transparent 1.5px);
+    background-size: 75px 75px;
+    }
+
+    /* Font-familiene */
+    .font-display {
+        font-family: 'Bungee', cursive;
+    }
+    .font-neon {
+        font-family: 'Bungee Shade', cursive;
+    }
+    .font-retro {
+        font-family: 'VT323', monospace;
+    }
+    /* "Grainy" effekt for Scoreboard */
+    .grainy {
+        position: relative;
+    }
+    .grainy::after {
+        content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Noise_Condition.png");
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 10;
+    }
+
+}
+
+body{
+   @apply bg-[#0a0a12] text-white;
+  margin: 0; 
+}
