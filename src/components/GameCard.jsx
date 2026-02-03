@@ -67,7 +67,7 @@ export default function GameCard({ title, image, path, lottieJson}) {const [isHo
           className="absolute inset-0 rounded-[40px] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden border border-black/5"
           style={{
             // PAPIR-BILDE-BAKGRUNN
-            backgroundImage: `url('paper2.jpg')`,
+            backgroundImage: `url('gamecard_mia.png')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundColor: "#EAE3D6", // Fallback hvis bildet ikke laster
@@ -88,9 +88,8 @@ export default function GameCard({ title, image, path, lottieJson}) {const [isHo
           <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]" />
         </div>
 
-
         {/* BILDET/  */}
-        <div
+        {/* <div
           className="flex-1 flex justify-center items-center  w-full pt-12"
           style={{ transform: "translateZ(100px)" }}
         >
@@ -113,37 +112,51 @@ export default function GameCard({ title, image, path, lottieJson}) {const [isHo
               <img src={image} className="w-64 drop-shadow-2xl" alt={title} />
             )}
           </motion.div>
-        </div>
+        </div> */}
 
-        {/* TITTEL - ()Mellomnivå dybde)*/}
+        {/* TITTEL -posisjonert over bakgrunnsbildet*/}
         <div
-          className="relative z-20 mb-28"
-          style={{ transform: "translateZ(60px)" }}
+          className="absolute z-20"
+          style={{
+            top: "42%",
+            left: "50%",
+            width: "100%",
+            transform: "translateX(-50%) translateZ(90px)",
+          }}
         >
           <h2
-            className="font-sans font-bold text-center leading-[0.8] italic tracking-tight text-white"
+            className="text-center italic tracking-tighter"
             style={{
-              fontSize: "76px",
-              WebkitTextStroke: "1px #E0748F",
+              fontFamily: "'Source Serif 4', serif",
+              fontWeight: "900",
+              fontSize: "75px",
+              lineHeight: "0.8",
+              color: "#B7A0B8",
               textShadow: `
-        -4px -4px 0 #E0748F, 4px -4px 0 #E0748F,
-                -4px 4px 0 #E0748F, 4px 4px 0 #E0748F,
-                12px 12px 25px rgba(0,0,0,0.3)`,
+      -1.5px -1.5px 0 #06070C, 1.5px -1.5px 0 #06070C, -1.5px 1.5px 0 #06070C, 1.5px 1.5px 0 #06070C,
+      /* 2. Den 'doble' streken (en skygge som ligger rett under) */
+      0px 4px 0px #06070C, 
+      /* 3. Selve bunnen av klistremerket */
+      0px 7px 0px #06070C,
+      /* 4. Myk skygge som kastes på bakgrunnen */
+      0px 12px 20px rgba(0,0,0,0.5)
+    `,
             }}
           >
-            <span className="block">Memory</span>
-            <span className="block ml-10" style={{ fontSize: "66px" }}>
-              Game
+            <span className="block" style={{ marginBottom: "-5px" }}>
+              Memory
+            </span>
+            <span
+              className="block ml-6"
+              style={{
+                fontSize: "68px",
+                textTransform: "lowercase",
+              }}
+            >
+              game
             </span>
           </h2>
         </div>
-
-        {/* tekst nederst */}
-        {/* <div className="relative z-10 pb-24 text-center">
-          <div className="text-black font-retro text-sm mt-4 text-center leading-tight uppercase opacity-70">
-            Limited Edition Arcade Series <br />© 1984 Playloop Computing
-          </div>
-        </div> */}
 
         {/* PLAY NOW- knapp */}
         <div
