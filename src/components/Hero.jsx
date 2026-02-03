@@ -11,8 +11,6 @@ export default function Hero() {
           </h1>
           <p className="mt-6 font-retro text-xl text-yellow-400 tracking-[0.3em] animate-pulse">INSERT COIN TO START</p>
         </header>
-        {/* scoreboard */}
-        <Scoreboard/>
       </section>
     );
 }

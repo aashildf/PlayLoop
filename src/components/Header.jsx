@@ -13,18 +13,18 @@ export default function Header() {
       {/* LOGO */}
       <Link to="/" className="no-underline">
         <h1 
-        className="text-5xl tracking-tighter leading-none neon-text-pink"
+        className="text-4xl tracking-tighter leading-none neon-text-pink"
             style={{ 
               fontFamily: "'VT323', monospace", 
               color: neonPink 
             }}>
-            PLAYLOOP
+            PlayLoop
         </h1>
       </Link>
 
       {/* NAV-LENKER */}
-      <nav className="flex gap-8">
-        {["home", "about us", "games"].map((item) => (
+      <nav className="flex gap-12">
+        {["Home", "Settings", "Games"].map((item) => (
           <Link
             key={item}
             to={`/${item.replace(" ", "")}`}
@@ -34,7 +34,6 @@ export default function Header() {
                 fontSize: "24px",
                 color: neonPink,
                 textDecoration: "none",
-                textTransform: "uppercase",
                 letterSpacing: "1px"
               }}
               >
@@ -54,15 +53,14 @@ export default function Header() {
             fontFamily: "'VT323', monospace",
             fontSize: "26px",
             color: yellowCoin, // Bruker gult for å skille den ut litt
-            textDecoration: "none",
-            textTransform: "uppercase",
-            border: `2px solid ${yellowCoin}`,
-            padding: "4px 12px",
-            borderRadius: "4px",
+            textDecoration: "none",      
+            border: `1px dotted ${yellowCoin}`,
+            padding: "0px 12px",
+            borderRadius: "2px",
             boxShadow: `0 0 10px ${yellowCoin}40` // Subtil gul glød
           }}
           >
-            Log in
+            Log in:
           </Link>
       </div>
     </nav>
