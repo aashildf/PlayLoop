@@ -1,4 +1,6 @@
-function Card({ card, isFlipped, isMatched, onClick}) {
+import "../../mia/styles/flip.css"
+
+function Card({ card, isFlipped, isMatched, onClick }) {
   return (
     <div
       onClick={onClick}
@@ -6,9 +8,7 @@ function Card({ card, isFlipped, isMatched, onClick}) {
     >
       <div
         className={`w-full h-full relative transition-transform duration-500 preserve-3d ${
-					isFlipped || isMatched
-            ? ""
-            : "rotate-y-180"
+          isFlipped || isMatched ? "" : "rotate-y-180"
         }`}
       >
         {/* card front */}
