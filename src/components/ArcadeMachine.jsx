@@ -18,7 +18,7 @@ const ArcadeMachine = ({ yellowCoin }) => {
             left: "50%",
             transform: "translateX(-38.8%)",
             width: "32%",
-            height: "31.4%",
+            height: "31.9%",
             zIndex: 10,
             perspective: "1000px",
           }}
@@ -33,7 +33,7 @@ const ArcadeMachine = ({ yellowCoin }) => {
               flexDirection: "column",
 
               transform:
-                "perspective(1000px) rotateX(1deg) rotateY(-11deg) rotateZ(1deg) skewX(-11deg)",
+                "perspective(1000px) rotateX(1deg) rotateY(-9deg) rotateZ(-1.2deg) skewX(-11deg) skewY(4deg)",
 
               borderRadius: "20px",
               overflow: "hidden",
