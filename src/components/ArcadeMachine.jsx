@@ -14,34 +14,29 @@ const ArcadeMachine = ({ yellowCoin }) => {
         <div
           className="absolute"
           style={{
-            top: "15%",
+            top: "14%",
             left: "50%",
-            transform: "translateX(-41%)",
+            transform: "translateX(-38.8%)",
             width: "32%",
-            height: "40%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            height: "31.4%",
             zIndex: 10,
-            overflow: "visible", // Lar innholdet flyte naturlig
+            perspective: "1000px",
           }}
         >
           <div
             style={{
               backgroundColor: "#050505",
+              border: "2px solid rgba(255, 255, 255, 0.8)",
               width: "100%",
               height: "100%",
               display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              transform: "skewX(-3deg) scale(1.05)",
-              // Her styrer vi hjørnene manuelt:
-              // 1. punkt (0% 0%): Venstre topp
-              // 2. punkt (100% 5%): Høyre topp
-              // 3. punkt (100% 95%): Høyre bunn
-              // 4. punkt (0% 85%): VENSTRE BUNN
-              clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-              padding: "10px",
+              flexDirection: "column",
+
+              transform:
+                "perspective(1000px) rotateX(1deg) rotateY(-11deg) rotateZ(1deg) skewX(-11deg)",
+
+              borderRadius: "20px",
+              overflow: "hidden",
             }}
           >
             {/* Highscore tekst */}
