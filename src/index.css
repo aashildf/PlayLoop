@@ -124,7 +124,71 @@ body {
 
 }
 
+@keyframes scanlineMove {
+  from { background-position-y: 0; }
+  to { background-position-y: 120px; }
+}
+
+
 body{
    @apply bg-[#0a0a12] text-white;
   margin: 0; 
+}
+
+/* =========================
+   CRT EFFECTS (ADDED)
+   ========================= */
+
+/* Scanline drift */
+@keyframes crtScanlineMove {
+  from { background-position-y: 0; }
+  to { background-position-y: 120px; }
+}
+
+.crt-scanlines {
+  animation: crtScanlineMove 8s linear infinite;
+}
+
+/* Subtil CRT-flicker */
+@keyframes crtFlicker {
+  0%   { filter: brightness(1) contrast(1); }
+  2%   { filter: brightness(1.08) contrast(1.05); }
+  4%   { filter: brightness(0.96) contrast(0.98); }
+  100% { filter: brightness(1) contrast(1); }
+}
+
+.crt-flicker {
+  animation: crtFlicker 6s infinite;
+}
+
+/* =========================
+   PIXELATED BUTTON
+   ========================= */
+.pixel-button {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  background: #D83BD2; /* Din farge */
+  color: white;
+  text-transform: uppercase;
+  /* Dette lager de "hakkete" hjørnene */
+  clip-path: polygon(
+    0 4px, 4px 4px, 4px 0, 
+    calc(100% - 4px) 0, calc(100% - 4px) 4px, 100% 4px, 
+    100% calc(100% - 4px), calc(100% - 4px) calc(100% - 4px), calc(100% - 4px) 100%, 
+    4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px)
+  );
+}
+
+.crt-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05));
+    background-size: 100% 3px, 2px 100%;
+    pointer-events: none;
+    z-index: 999;
 }

@@ -9,7 +9,7 @@ export default function Footer() {
         textAlign: "center",
       }}
     >
-      <p>&copy; 2026 PlayLoop  - Under konstruksjon</p>
+      <p>&copy; 2026 LOOP ENTERTAINMENT SYSTEMS</p>
     </footer>
   );
 }

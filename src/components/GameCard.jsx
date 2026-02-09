@@ -143,35 +143,25 @@ export default function GameCard({ title, image, path, customTitle, lottieJson})
         </div>
       </motion.div>
 
-      {/* PLAY NOW- KNAPP */}
+      {/* KNAPPENE */}
+
       <div
-        className="absolute bottom-12"
-        style={{ transform: "translateZ(110px)" }}
+        className="absolute -bottom-1"
+        style={{ transform: "translateZ(50px)" }}
       >
         <Link
           to={path}
-          className="py-4 px-12 text-white font-black bg-[#79067D] rounded-full border-b-[6px] border-pink-900 shadow-[0_10px_30px_rgba(224,116,143,0.4)] hover:brightness-110 active:border-b-0 active:translate-y-1.5 transition-all tracking-widest"
+          className="group relative flex min-w-[240px] h-16 cursor-pointer items-center justify-center overflow-hidden rounded-full px-8 bg-[#9d00b5] text-white text-xl font-black tracking-widest transition-transform duration-75 active:scale-95 shadow-lg"
+          style={{ fontFamily: "'VT323',  monospace" }}
         >
-          {/* Knappens kropp med dybde-effekt */}
-          <span
-            className="absolute inset-0 rounded-2xl bg-[#79067D] border-2 border-black/20"
-            style={{
-              boxShadow: `
-                0 8px 0 #A81C41,              /* Selve tykkelsen på knappen */
-                0 15px 25px rgba(255, 46, 99, 0.4), /* Neon-glød på bakken */
-                inset 0 4px 4px rgba(255,255,255,0.3), /* Lysrefleksjon øverst */
-                inset 0 -4px 6px rgba(0,0,0,0.3)      /* Skygge nederst på knappen */
-              `,
-            }}
-          />
+          {/* TEKST */}
+          <span className="relative z-10">PRESS START</span>
 
-          {/* Teksten "Play now" */}
-          <span
-            className="relative z-10"
-            style={{ textShadow: "0 2px 4px rgba(0,0,0,0.5)" }}
-          >
-            PLAY NOW
-          </span>
+          {/* GLITCH-STRIPE - Satt til 'duration-200' for å være lynrask */}
+          <div className="absolute inset-0 bg-white/30 transform -skew-x-12 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-200 ease-in-out" />
+
+          {/* ENKLERE GRADIENT I STEDET FOR TUNGE SKYGGER */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
         </Link>
       </div>
     </div>
