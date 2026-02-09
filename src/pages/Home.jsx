@@ -1,4 +1,4 @@
-import Hero from "../components/Hero";
+import Hero from "../components/Hero2.jsx";
 import GameCard from "../components/GameCard";
 import cowboyEmoji from "../assets/Cowboyemoji.json";
 import ArcadeMachine from "../components/ArcadeMachine.jsx";
