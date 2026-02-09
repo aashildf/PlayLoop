@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="relative min-h-screen bg-[#181111] text-white">
    
-      <div className="crt-overlay crt-flicker" />
+      <div className="crt-overlay " />
     
       <Header />
       <main className="relative z-10 ">

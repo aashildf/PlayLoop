@@ -90,13 +90,36 @@ body {
 
 
     /* Bakgrunnsmønster, Bricks */
-    .brick-pattern {
-        background-color: #0a0a12;
-    background-image: 
-      linear-gradient(#1a1a2e 1.5px, transparent 1.5px), 
-      linear-gradient(90deg, #1a1a2e 1.5px, transparent 1.5px);
-    background-size: 75px 75px;
-    }
+  .brick-pattern {
+  background-color: #0a0a12;
+  background-image: 
+    /* Lag 1: CRT-linjer (Øverst) */
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%),
+    /* Lag 2 & 3: Murstein */
+    linear-gradient(90deg, #1a1a2e 1.5px, transparent 1.5px),
+    linear-gradient(#1a1a2e 1.5px, transparent 1.5px);
+  background-size: 100% 4px, 80px 80px, 80px 80px;
+  background-attachment: fixed;
+}
+
+.crt-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  pointer-events: none !important;
+  /* ekstremt høy z-index for å ligge over absolutt alt */
+  z-index: 999999 !important;
+  
+  /* CSS-gradient som lager svarte striper.(background-size: 100% 3px- denne kan endres til 4 eller 1 for mer/mindre effekt) */
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.2) 50%
+  );
+  background-size: 100% 3px;
+  opacity: 1;
+}
 
     /* Font-familiene */
     .font-display {
@@ -124,10 +147,6 @@ body {
 
 }
 
-@keyframes scanlineMove {
-  from { background-position-y: 0; }
-  to { background-position-y: 120px; }
-}
 
 
 body{
@@ -140,26 +159,26 @@ body{
    ========================= */
 
 /* Scanline drift */
-@keyframes crtScanlineMove {
+/* @keyframes crtScanlineMove {
   from { background-position-y: 0; }
   to { background-position-y: 120px; }
-}
+} */
 
-.crt-scanlines {
+/* .crt-scanlines {
   animation: crtScanlineMove 8s linear infinite;
-}
+} */
 
 /* Subtil CRT-flicker */
-@keyframes crtFlicker {
+/* @keyframes crtFlicker {
   0%   { filter: brightness(1) contrast(1); }
   2%   { filter: brightness(1.08) contrast(1.05); }
   4%   { filter: brightness(0.96) contrast(0.98); }
   100% { filter: brightness(1) contrast(1); }
-}
+} */
 
-.crt-flicker {
+/* .crt-flicker {
   animation: crtFlicker 6s infinite;
-}
+} */
 
 /* =========================
    PIXELATED BUTTON
@@ -180,15 +199,9 @@ body{
   );
 }
 
-.crt-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), 
-                linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05));
-    background-size: 100% 3px, 2px 100%;
-    pointer-events: none;
-    z-index: 999;
+
+
+/* Legg til denne for å hjelpe på farten til kortene */
+.will-change-transform {
+  will-change: transform;
 }

@@ -49,6 +49,7 @@ export default function GameCard({ title, image, path, customTitle, lottieJson})
           rotateX,
           rotateY,
           transformStyle: "preserve-3d",
+          transform: "translateZ(0)",
           backgroundColor: "#EAE3D6",
         }}
         className="relative w-[400px] h-[580px] rounded-[40px] flex flex-col items-center shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-visible cursor-pointer border border-black/5"
@@ -143,25 +144,47 @@ export default function GameCard({ title, image, path, customTitle, lottieJson})
         </div>
       </motion.div>
 
-      {/* KNAPPENE */}
-
+      {/* PLAY NOW - KNAPP CONTAINER */}
       <div
-        className="absolute -bottom-1"
-        style={{ transform: "translateZ(50px)" }}
+        className="absolute -bottom-1 left-0 w-full flex justify-center"
+        style={{
+          transform: "translateZ(120px)", // Litt ekstra løft for 3D-dybde
+          transformStyle: "preserve-3d",
+          pointerEvents: "none",
+        }}
       >
         <Link
           to={path}
-          className="group relative flex min-w-[240px] h-16 cursor-pointer items-center justify-center overflow-hidden rounded-full px-8 bg-[#9d00b5] text-white text-xl font-black tracking-widest transition-transform duration-75 active:scale-95 shadow-lg"
-          style={{ fontFamily: "'VT323',  monospace" }}
+          className="group relative flex min-w-[260px] h-14 items-center justify-center rounded-xl transition-all duration-75 hover:scale-105 active:scale-90 pointer-events-auto overflow-hidden shadow-[0_0_25px_rgba(255,0,255,0.4)] border border-[#ff00ff]/40"
+          style={{
+            fontFamily: "'VT323', monospace",
+            backgroundColor: "#6a007a",
+          }}
         >
-          {/* TEKST */}
-          <span className="relative z-10">PRESS START</span>
+          {/* TEKST - Neon rosa/hvit */}
+          <span
+            className="relative z-20 text-3xl tracking-widest  italic"
+            style={{
+              color: "#ffffff",
+              textShadow: "0 0 5px #fff, 0 0 15px #ff00ff",
+            }}
+          >
+            Press Start
+          </span>
 
-          {/* GLITCH-STRIPE - Satt til 'duration-200' for å være lynrask */}
-          <div className="absolute inset-0 bg-white/30 transform -skew-x-12 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-200 ease-in-out" />
+          {/* LYSGLIMT - Lynraskt fra venstre til høyre */}
+          <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-75">
+            <div className="absolute top-0 left-0 w-16 h-full bg-white/60 transform -skew-x-12 translate-x-[-250%] group-hover:translate-x-[700%] transition-transform duration-400 ease-in-out" />
+          </div>
 
-          {/* ENKLERE GRADIENT I STEDET FOR TUNGE SKYGGER */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
+          {/* BAKGRUNN - Burgunder "Light-up" */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#b532d1] via-[#6a007a] to-[#300038] group-hover:brightness-125 transition-all duration-75" />
+
+          {/* Lys-stripe på toppkanten */}
+          <div className="absolute top-0 left-0 w-full h-[1px] bg-white/30 z-30" />
+
+          {/* INDRE GLØD */}
+          <div className="absolute inset-0 shadow-[inset_0_0_15px_rgba(255,0,255,0.5)] pointer-events-none" />
         </Link>
       </div>
     </div>
