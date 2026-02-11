@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import Home from "../pages/Home";
+import Home from "../pages/Home2";
 import MemoryGame from "../mia/MemoryGame";
 import ReactionGame from "../Therese/ReactionGame";
 import TestPage from "../LeneRenate/TestPage";

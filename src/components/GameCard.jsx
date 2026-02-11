@@ -7,7 +7,7 @@ import { useState} from "react";
 
 
 
-export default function GameCard({ title, image, path, lottieJson}) {const [isHovered, setIsHovered] = useState(false);
+export default function GameCard({ title, image, path, customTitle, lottieJson}) {const [isHovered, setIsHovered] = useState(false);
 
   // PARALLAX EFFEKT: 3D
   const x = useMotionValue(0);
@@ -36,6 +36,7 @@ export default function GameCard({ title, image, path, lottieJson}) {const [isHo
       className="py-24 flex justify-center items-center"
       style={{ perspective: "1500px" }}
     >
+      {/* SELVE KORTET */}
       <motion.div
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
@@ -48,6 +49,7 @@ export default function GameCard({ title, image, path, lottieJson}) {const [isHo
           rotateX,
           rotateY,
           transformStyle: "preserve-3d",
+          transform: "translateZ(0)",
           backgroundColor: "#EAE3D6",
         }}
         className="relative w-[400px] h-[580px] rounded-[40px] flex flex-col items-center shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-visible cursor-pointer border border-black/5"
@@ -66,8 +68,8 @@ export default function GameCard({ title, image, path, lottieJson}) {const [isHo
         <div
           className="absolute inset-0 rounded-[40px] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden border border-black/5"
           style={{
-            // PAPIR-BILDE-BAKGRUNN
-            backgroundImage: `url('gamecard_mia.png')`,
+            // BILDE-BAKGRUNN
+            backgroundImage: `url(${image})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundColor: "#EAE3D6", // Fallback hvis bildet ikke laster
@@ -88,89 +90,79 @@ export default function GameCard({ title, image, path, lottieJson}) {const [isHo
           <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]" />
         </div>
 
-        {/* BILDET/  */}
-        {/* <div
-          className="flex-1 flex justify-center items-center  w-full pt-12"
-          style={{ transform: "translateZ(100px)" }}
-        >
-          <motion.div
-            animate={{
-              y: [0, -15, 0],
-              filter: isHovered
-                ? "drop-shadow(0 30px 40px rgba(0,0,0,0.4))"
-                : "drop-shadow(0 15px 15px rgba(0,0,0,0.2))",
-            }}
-            transition={{
-              y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-            }}
-          >
-            {isHovered && lottieJson ? (
-              <div className="w-72">
-                <Lottie animationData={lottieJson} loop={true} />
-              </div>
-            ) : (
-              <img src={image} className="w-64 drop-shadow-2xl" alt={title} />
-            )}
-          </motion.div>
-        </div> */}
 
-        {/* TITTEL -posisjonert over bakgrunnsbildet*/}
+        {/* TITTEL-SVEVENDE "Rendrer customTitle fra Home.jsx*/}
         <div
-          className="absolute z-20"
+          className="absolute z-20 w-full pointer-events-none"
           style={{
-            top: "42%",
+            top: "43%",
             left: "50%",
-            width: "100%",
-            transform: "translateX(-50%) translateZ(90px)",
+            transform: "translateX(-50%) translateZ(100px)",
+            transformStyle: "preserve-3d",
           }}
         >
-          <h2
-            className="text-center italic tracking-tighter"
+          <div
             style={{
-              fontFamily: "'Source Serif 4', serif",
-              fontWeight: "900",
-              fontSize: "75px",
-              lineHeight: "0.8",
-              color: "#B7A0B8",
+              fontFamily: "'Fredoka', sans-serif",
               textShadow: `
-      -1.5px -1.5px 0 #06070C, 1.5px -1.5px 0 #06070C, -1.5px 1.5px 0 #06070C, 1.5px 1.5px 0 #06070C,
-      /* 2. Den 'doble' streken (en skygge som ligger rett under) */
-      0px 4px 0px #06070C, 
-      /* 3. Selve bunnen av klistremerket */
-      0px 7px 0px #06070C,
-      /* 4. Myk skygge som kastes på bakgrunnen */
-      0px 12px 20px rgba(0,0,0,0.5)
-    `,
+        -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000,
+        0px 5px 0px #000, 
+        0px 8px 0px #000,
+        0px 15px 25px rgba(0,0,0,0.4)
+      `,
+              color: "#b7a0b8",
             }}
           >
-            <span className="block" style={{ marginBottom: "-5px" }}>
-              Memory
-            </span>
-            <span
-              className="block ml-6"
-              style={{
-                fontSize: "68px",
-                textTransform: "lowercase",
-              }}
-            >
-              game
-            </span>
-          </h2>
-        </div>
-
-        {/* PLAY NOW- knapp */}
-        <div
-          className="absolute bottom-10"
-          style={{ transform: "translateZ(40px)" }}
-        >
-          <Link
-            to={path}
-            className="py-4 px-12 text-white font-black bg-[#E0748F] rounded-full border-b-[6px] border-pink-900 shadow-[0_10px_30px_rgba(224,116,143,0.4)] hover:brightness-110 active:border-b-0 `active:translate-y-1.5` transition-all tracking-widest"
-          >
-            PLAY NOW
-          </Link>
+            {/* HER VISES TEKSTEN FRA HOME.JSX */}
+            {customTitle}
+          </div>
         </div>
       </motion.div>
+      {/* PLAY NOW - TURBO-KNAPP */}
+      <div
+        className="absolute -bottom-1 left-0 w-full flex justify-center"
+        style={{
+          transform: "translateZ(120px)",
+          transformStyle: "preserve-3d",
+          pointerEvents: "none",
+        }}
+      >
+        <Link
+          to={path}
+          /* transition-duration er nå nede i 50ms (0.05s) - det er lynraskt */
+          className="group relative flex min-w-[260px] h-14 items-center justify-center rounded-xl pointer-events-auto overflow-hidden border-2 border-[#ff00ff]/50 
+               transition-[transform] duration-[50ms] ease-out hover:scale-105 active:scale-95 shadow-xl"
+          style={{
+            fontFamily: "'VT323', monospace",
+            backgroundColor: "#6a007a",
+          }}
+        >
+          {/* TEKST */}
+          <span
+            className="relative z-20 text-3xl tracking-widest uppercase italic"
+            style={{
+              color: "#ffffff",
+              textShadow: "0 0 5px #fff, 0 0 15px #ff00ff",
+            }}
+          >
+            Press Start
+          </span>
+
+          {/* LYSGLIMT - Bruker "linear" timing for å slippe "acceleration" forsinkelse */}
+          <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-0">
+            <div className="absolute top-0 left-0 w-24 h-full bg-white/50 transform -skew-x-12 translate-x-[-300%] group-hover:translate-x-[800%] transition-transform duration-300 ease-linear" />
+          </div>
+
+          {/* BAKGRUNN - Vi fjerner transition her for at fargen skal "snappe" på med en gang */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#b532d1] via-[#6a007a] to-[#300038] group-hover:from-[#d63ef2] group-hover:via-[#9d00b5]" />
+
+          {/* FAST LYS-STRIPE PÅ TOPPEN */}
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-white/40 z-30 opacity-70" />
+
+          {/* INDRE GLØD */}
+          <div className="absolute inset-0 shadow-[inset_0_0_15px_rgba(255,0,255,0.6)] pointer-events-none" />
+        </Link>
+      </div>
     </div>
   );
 }
