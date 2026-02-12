@@ -1,5 +1,5 @@
 import Hero from "../components/Hero2.jsx";
-import GameCard from "../components/GameCard";
+import GameCard from "../components/GameCardtest";
 import ArcadeMachine from "../components/ArcadeMachine.jsx";
 import { useEffect, useState } from "react"; 
 import { useLocation, useNavigate } from "react-router-dom";
@@ -165,7 +165,7 @@ useEffect(() => {
         className="relative z-0 w-full py-10 bg-transparent border-none"
       >
         <div className="max-w-[1400px] mx-auto px-6">
-          <h2 className="font-retro text-5xl md:text-7xl text-[#57C9D3] -mb-12 -mt-24 uppercase tracking-widest text-center">
+          <h2 className="font-retro text-5xl md:text-7xl text-[#57C9D3] mb-12 -mt-24 uppercase tracking-widest text-center">
             Select Mission
           </h2>
 
@@ -173,11 +173,7 @@ useEffect(() => {
           Mapper spillene horisontalt */}
           <div className="flex flex-col lg:flex-row justify-center items-center lg:items-stretch gap-10">
             {games.map((game) => (
-              <div
-                key={game.id}
-                onClick={() => navigate(`/${game.path}`)}
-                className="w-full max-w-[400px] transform hover:scale-105 transition-all duration-300 cursor-pointer"
-              >
+              <div key={game.id} className="ww-full max-w-[400px]">
                 <GameCard
                   title={game.title}
                   description={game.description}
@@ -216,7 +212,6 @@ useEffect(() => {
           </div>{" "}
         </button>
       )}
-      
     </div>
   );
 }
