@@ -1,13 +1,33 @@
 import Hero from "../components/Hero2.jsx";
 import GameCard from "../components/GameCard";
 import ArcadeMachine from "../components/ArcadeMachine.jsx";
-import { useEffect } from "react"; 
-import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react"; 
+import { useLocation, useNavigate } from "react-router-dom";
+
 
 
 // For at den skal scrolle til spillene
 export default function Home2() {
   const { hash } = useLocation();
+  const navigate = useNavigate();
+
+const [showTopButton, setShowTopButton] = useState(false);
+
+useEffect(() => {
+  const handleScroll = () => {
+    if (window.scrollY > 400) {
+      setShowTopButton(true);
+    } else {
+      setShowTopButton(false);
+    }
+  };
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
     if (hash === "#mission-select-full") {
@@ -142,10 +162,10 @@ export default function Home2() {
       {/* SEKSJON 2: Spillene (Select Mission) - */}
       <section
         id="mission-select-full"
-        className="relative z-0 w-full py-32 bg-transparent border-none"
+        className="relative z-0 w-full py-10 bg-transparent border-none"
       >
         <div className="max-w-[1400px] mx-auto px-6">
-          <h2 className="font-retro text-5xl md:text-7xl text-[#57C9D3] mb-0 uppercase tracking-widest text-center">
+          <h2 className="font-retro text-5xl md:text-7xl text-[#57C9D3] -mb-12 -mt-24 uppercase tracking-widest text-center">
             Select Mission
           </h2>
 
@@ -155,7 +175,8 @@ export default function Home2() {
             {games.map((game) => (
               <div
                 key={game.id}
-                className="w-full max-w-[400px] transform hover:scale-105 transition-all duration-300"
+                onClick={() => navigate(`/${game.path}`)}
+                className="w-full max-w-[400px] transform hover:scale-105 transition-all duration-300 cursor-pointer"
               >
                 <GameCard
                   title={game.title}
@@ -170,6 +191,32 @@ export default function Home2() {
           </div>
         </div>
       </section>
+      {showTopButton && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-10 right-10 z-[100] cursor-pointer group outline-none bg-transparent border-none"
+        >
+          {" "}
+          <div className="w-16 h-16 border-[6px] border-[#ff00ff] shadow-[0_0_20px_#ff00ff] rounded-full flex items-center justify-center bg-black/80 group-hover:scale-110 transition-all duration-300  group-hover:border-white">
+            {" "}
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ff00ff"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="transition-colors duration-300 group-hover:animate-bounce group-hover:stroke-white"
+            >
+              {" "}
+              <path d="M12 18V6M6 12l6-6 6 6" />{" "}
+            </svg>{" "}
+          </div>{" "}
+        </button>
+      )}
+      
     </div>
   );
 }
