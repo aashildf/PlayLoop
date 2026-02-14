@@ -8,7 +8,7 @@ const ArcadeMachine = ({ yellowCoin }) => {
         {/* ANKER-DIV: Denne holder alt sammen */}
         <div className="hidden md:block relative">
           <img
-            src="arcade_machine.png"
+            src="images/arcade_machine.png"
             alt="Arcade Machine"
             className="h-[130vh] w-auto object-contain drop-shadow-[0_0_50px_rgba(216,59,210,0.3)]"
             style={{ maxWidth: "none" }}

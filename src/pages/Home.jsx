@@ -47,7 +47,7 @@ export default function Home3() {
       {
         id: 1,
         title: "Memory game",
-        image: "/gamecard_mia.png",
+        image: "images/gamecard_mia.png",
         description: " ",
         path: "memorygame",
         customTitle: (
@@ -107,7 +107,7 @@ export default function Home3() {
       {
         id: 2,
         title: "Reaction Game",
-        image: "/gamecard_therese.png",
+        image: "images/gamecard_therese.png",
         description: " ",
         path: "reactiongame",
         customTitle: (
@@ -139,7 +139,7 @@ export default function Home3() {
       {
         id: 3,
         title: "Super Secret Game ?",
-        image: "/secret_game.png",
+        image: "images/secret_game.png",
         description: " ",
         path: "secretgame",
         customTitle: (

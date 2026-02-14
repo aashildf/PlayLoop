@@ -7,12 +7,12 @@ export default function Hero({ onMissionBoom }) {
   const [isPoweringOff, setIsPoweringOff] = useState(false);
 
   const handleStart = () => {
-    new Audio("/coin_drop.mp3").play().catch(() => {});
+    new Audio("audio/coin_drop.mp3").play().catch(() => {});
     setIsFlashing(true);
 
     setTimeout(() => {
       setIsPoweringOff(true);
-      new Audio("/screen_buzz.mp3").play().catch(() => {});
+      new Audio("audio/screen_buzz.mp3").play().catch(() => {});
 
       setTimeout(() => {
         // scroll uten smooth for å unngå lag
@@ -26,7 +26,7 @@ export default function Hero({ onMissionBoom }) {
 
         html.style.scrollBehavior = oldScroll;
 
-        new Audio("/expand.mp3").play().catch(() => {});
+        new Audio("audio/expand.mp3").play().catch(() => {});
 
         // BOOM: trigger overskriften når du vil (juster)
         setTimeout(() => {
