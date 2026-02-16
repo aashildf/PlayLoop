@@ -4,7 +4,11 @@ import ArcadeMachine from "../components/ArcadeMachine.jsx";
 import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 
+<<<<<<< Updated upstream
 
+=======
+// test
+>>>>>>> Stashed changes
 
 export default function Home3() {
   const { hash } = useLocation();
