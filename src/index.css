@@ -241,7 +241,7 @@ body {
   }
   100% { 
     opacity: 1; 
-    transform: scale(1); /* Krymper saaakte tilbake til normal størrelse */
+    transform: scale(1); /* Krymper sakte tilbake til normal størrelse */
     filter: blur(0px) brightness(1);
   }
 }
@@ -254,12 +254,13 @@ body {
 
 /* Gjør selve linjen mer synlig som standard */
 .mission-underline {
-  height: 6px;
+  height: 4px;
   background: #00ffff;
   box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
   width: 100%;
   max-width: 800px;
   opacity: 0;
+  margin-bottom: 0 !important;
 }
 
 
@@ -274,7 +275,32 @@ body {
 }
 
 
-@keyframes finalPop {
+/* @keyframes finalPop {
   0% { transform: scaleX(1); opacity: 0; filter: brightness(10); }
   100% { transform: scaleX(1); opacity: 1; filter: brightness(1); }
+} */
+
+@keyframes finalPop {
+  0% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1.05);
+    opacity: 0; /* Linjen blir helt usynlig til slutt */
+  }
+}
+
+.mission-underline {
+  width: 260px; /* Perfekt for mobil */
+  height: 4px;
+  background: #57C9D3;
+  box-shadow: 0 0 15px #57C9D3;
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .mission-underline {
+    width: 600px; /* Går tilbake til stor bredde på iPad/PC */
+  }
 }

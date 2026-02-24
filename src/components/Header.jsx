@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Header2() {
   const [isOpen, setIsOpen] = useState(false);
-  const neonPink = "#D83BD2";
+  
 
   return (
     <>
@@ -61,7 +61,7 @@ export default function Header2() {
                 to={path}
                 onClick={() => {
                   setIsOpen(false);
-                  
+
                    if (item === "Home") {
                      window.scrollTo({ top: 0, behavior: "smooth" });
                    }
@@ -73,7 +73,7 @@ export default function Header2() {
                         el.scrollIntoView({ behavior: "smooth" });
                       }
                     }, 50);
-                    // "Vent 50ms før du kjører denne koden, ."
+                    // "Venter 50ms før koden kjøres, ."
                     // slik at elementet er ferdig rendret.
                   }
                 }}

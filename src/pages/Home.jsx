@@ -1,4 +1,4 @@
-import Hero from "../components/Herotest.jsx";
+import Hero from "../components/Hero.jsx";
 import GameCard from "../components/GameCard.jsx";
 import ArcadeMachine from "../components/ArcadeMachine.jsx";
 import { useEffect, useMemo, useState } from "react";
@@ -45,7 +45,7 @@ export default function Home3() {
   // ---SCROLL-KNAPP---
   useEffect(() => {
     const handleScroll = () => {
-      setShowTopButton(window.scrollY > 400);
+      setShowTopButton(window.scrollY > 800);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -78,18 +78,12 @@ export default function Home3() {
             style={{ color: "#B7A0B8" }}
           >
             <span
-              className="text-[70px] leading-[0.9] italic font-bold"
+              className="text-[65px] leading-[0.9] italic font-bold"
               style={{
                 textShadow: `
-  -2px -2px 0 rgba(0,0,0,0.45),
-   2px -2px 0 rgba(0,0,0,0.45),
-  -2px  2px 0 rgba(0,0,0,0.45),
-   2px  2px 0 rgba(0,0,0,0.45),
-  -1px -1px 0 rgba(0,0,0,0.25),
-   1px -1px 0 rgba(0,0,0,0.25),
-  -1px  1px 0 rgba(0,0,0,0.25),
-   1px  1px 0 rgba(0,0,0,0.25)
-`,
+            2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+            0px 6px 0px rgba(0,0,0,0.4)
+          `,
               }}
             >
               Memory
@@ -98,25 +92,19 @@ export default function Home3() {
               className="text-[65px] mt-[-20px] italic font-bold flex items-center"
               style={{
                 textShadow: `
-  -2px -2px 0 rgba(0,0,0,0.45),
-   2px -2px 0 rgba(0,0,0,0.45),
-  -2px  2px 0 rgba(0,0,0,0.45),
-   2px  2px 0 rgba(0,0,0,0.45),
-  -1px -1px 0 rgba(0,0,0,0.25),
-   1px -1px 0 rgba(0,0,0,0.25),
-  -1px  1px 0 rgba(0,0,0,0.25),
-   1px  1px 0 rgba(0,0,0,0.25)
-`,
+            2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+            0px 6px 0px rgba(0,0,0,0.4)
+          `,
               }}
             >
               <span
                 style={{
                   fontFamily: "'Schibsted Grotesk', sans-serif",
-                  fontWeight: "900",
+                  fontWeight: "800",
                   fontStyle: "normal",
                   display: "inline-block",
                   transform: "scale(1.2) translateY(3px)",
-                  marginRight: "-4px",
+                  marginRight: "-5px",
                 }}
               >
                 g
@@ -140,8 +128,10 @@ export default function Home3() {
             <span
               className="text-[68px] leading-none italic font-bold"
               style={{
-                textShadow:
-                  "3px 8px 0 #A53010, -3px -3px 0 #A53010, 3px -3px 0 #A53010, 3px -3px 0 #A53010",
+                textShadow: `
+      1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 
+      3px 8px 0 #A53010, -3px -3px 0 #A53010, 3px -3px 0 #A53010, -3px 3px 0 #A53010
+    `,
               }}
             >
               Reaction
@@ -149,8 +139,10 @@ export default function Home3() {
             <span
               className="text-[64px] mt-[-22px] italic font-bold"
               style={{
-                textShadow:
-                  "3px 8px 0 #A53010, -3px -3px 0 #A53010, 3px -3px 0 #A53010, 3px -3px 0 #A53010",
+                textShadow: `
+      1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 
+      3px 8px 0 #A53010, -3px -3px 0 #A53010, 3px -3px 0 #A53010, -3px 3px 0 #A53010
+    `,
               }}
             >
               Game
@@ -174,11 +166,11 @@ export default function Home3() {
                 key={i}
                 className="text-[54px] leading-[0.8] italic font-bold"
                 style={{
-                  color: "#6BCFC2", // Hovedfarge
+                  color: "#6BCFC2",
                   textShadow: `
+        1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
         3px 3px 0px #AB6FBE, 
-        5px 5px 0px rgba(0,0,0,0.8),
-        -1px -1px 0px rgba(0,0,0,0.5)
+        5px 5px 0px rgba(0,0,0,0.8)
       `,
                 }}
               >
@@ -199,7 +191,7 @@ export default function Home3() {
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
           backgroundImage:
-            "linear-gradient(to right, rgba(255, 19, 240, 0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 19, 240, 0.5) 1px, transparent 1px)",
+            "linear-gradient(to right, rgba(255, 19, 240, 0.3) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 19, 240, 0.3) 1px, transparent 1px)",
           backgroundSize: "50px 40px",
           transform: "perspective(600px) rotateX(65deg)",
           transformOrigin: "center top",
@@ -209,19 +201,24 @@ export default function Home3() {
       ></div>
 
       {/* SEKSJON 1: HERO & ARCADE */}
-      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center px-4 lg:px-20 pt-0 lg:-mt-10 gap-12">
-        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-          <Hero onMissionBoom={triggerMissionBoom} />
-        </div>
-        <div className="w-full lg:w-1/2 flex justify-center py-0">
-          <ArcadeMachine yellowCoin={"#FACC15"} />
+      <div className="relative z-10 flex flex-col xl:flex-row items-center justify-center px-4 lg:px-20 lg:pt-32 md:pt-48 xl:pt-0 gap-8">
+        {/* hero text */}
+        <div className="relative z-10 flex flex-col xl:flex-row items-center justify-between px-4 lg:px-20 pt-20 md:pt-32 lg:pt-52 xl:pt-0 gap-8 min-h-[85vh] xl:min-h-screen pb-10">
+          <div className="w-full xl:w-1/2 flex justify-center xl:justify-end">
+            <Hero onMissionBoom={triggerMissionBoom} />
+          </div>
+
+          {/* ARCADE-MASKIN: Skjult på iPad Pro (1024px) og alt under */}
+          <div className="hidden xl:flex w-full xl:w-1/2 justify-center py-0 relative z-30 opacity-100">
+            <ArcadeMachine yellowCoin={"#FACC15"} />
+          </div>
         </div>
       </div>
 
-      {/* SEKSJON 2: MISSION SELECT */}
+      {/* -SEKSJON 2: SPILLVALG*/}
       <section
         id="mission-select-full"
-        className="relative z-0 w-full py-10 bg-transparent"
+        className="relative z-0 w-full pt-4 md:pt-8 xl:pt-10 pb-10 bg-transparent overflow-hidden"
       >
         <div className="max-w-[1400px] mx-auto px-6">
           {/* TITLE WRAP */}
@@ -232,7 +229,7 @@ export default function Home3() {
                   key={boomKey}
                   className="flex flex-col items-center w-full z-10"
                 >
-                  <h2 className="font-retro text-[10vw] md:text-[6vw] uppercase flex flex-row items-center leading-none m-0">
+                  <h2 className="font-retro text-[12vw] md:text-[6vw] uppercase flex flex-col md:flex-row items-center leading-[0.8] md:leading-none m-0">
                     <span
                       style={{
                         animation: "textBoom 1.5s ease-out 3.2s forwards",
@@ -250,7 +247,7 @@ export default function Home3() {
                         textShadow: "0 0 20px #57C9D3",
                         color: "#57C9D3",
                       }}
-                      className="ml-6"
+                      className="md:ml-6 mt-2 md:mt-0"
                     >
                       MISSION
                     </span>
@@ -259,14 +256,16 @@ export default function Home3() {
                   <div
                     className="mission-underline"
                     style={{
-                      /* Laseren bruker nå 3.5 sekunder på å scanne ferdig */
+                      /* Vi endrer bredden basert på skjermstørrelse */
+                      width: window.innerWidth < 768 ? "280px" : "600px",
+                      margin: "0 auto", // Sentrerer streken
                       animation:
                         "laserScan 3.5s ease-in-out 0s forwards, finalPop 0.4s ease-out 4.0s forwards",
                     }}
                   />
                 </div>
 
-                {/* SHARDS SYSTEM */}
+                {/* ---------------SHARDS SYSTEM----------- */}
                 <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
                   {shards.map((shard, i) => (
                     <span
@@ -290,10 +289,51 @@ export default function Home3() {
             )}
           </div>
 
-          {/* GAME CARDS */}
-          <div className="relative z-20 flex flex-col lg:flex-row justify-center items-center lg:items-stretch gap-14 lg:gap-16 mt-12">
+          {/* -----------SWIPE TO EXPLORE--------------- */}
+          {/* Vi fjerner mb-[-80px] og bruker mt-10 for å legge den i tomrommet */}
+          <div className="flex flex-col items-center mb-4 mt-10 lg:hidden">
+            <p className="font-retro text-[#57C9D3] text-xs animate-pulse mb-2 uppercase tracking-widest">
+              « Swipe to explore »
+            </p>
+            <div className="flex gap-2">
+              {games.map((_, i) => (
+                <div
+                  key={i}
+                  className="w-2 h-2 rounded-full bg-[#57C9D3] shadow-[0_0_8px_#57C9D3]"
+                />
+              ))}
+            </div>
+          </div>
+
+          {/*-------------- GAME CARDS SECTION ---------------*/}
+          <div
+            className="
+  relative z-20
+  -mt-30 md:mt-0
+  
+  flex 
+  overflow-x-auto 
+  snap-x snap-mandatory 
+  scroll-smooth
+  hide-scrollbar
+  gap-0
+  px-10
+  pb-20
+  /* Desktop-reset: */
+  lg:flex-row lg:justify-center lg:overflow-visible lg:snap-none lg:px-0
+"
+          >
             {games.map((game) => (
-              <div key={game.id} className="w-full max-w-[400px]">
+              <div
+                key={game.id}
+                className="
+        snap-center shrink-0 
+        /* MOBIL-FIX: Krymp kortet og dra inn margene så de ikke overlapper eller har gap */
+        scale-[0.75] -mx-8 
+        /* NETTBRETT/DESKTOP-RESET: Full størrelse og normale marger */
+        md:scale-100 md:mx-4
+      "
+              >
                 <GameCard
                   title={game.title}
                   description={game.description}
