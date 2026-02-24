@@ -4,42 +4,43 @@ import ArcadeMachine from "../components/ArcadeMachine.jsx";
 import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-
 export default function Home3() {
   const { hash } = useLocation();
-  
+  const [showTopButton, setShowTopButton] = useState(false);
 
-const [showTopButton, setShowTopButton] = useState(false);
+  // ---ANIMASJON VED TRYKK PÅ MYNT---
+  const [titleBoomed, setTitleBoomed] = useState(false);
+  const [shards, setShards] = useState(() => []);
+  const [boomKey, setBoomKey] = useState(0);
 
+  const triggerMissionBoom = () => {
+    setTitleBoomed(false);
 
-// ---ANIMASJON VED TRYKK PÅ MYNT---
-const [titleBoomed, setTitleBoomed] = useState(false);
-const [shards, setShards] = useState(() => []);
-const [boomKey, setBoomKey] = useState(0);
+    // Starter prosessen 600ms etter mynt-kast
+    setTimeout(() => {
+      setBoomKey((k) => k + 1);
+      setTitleBoomed(true);
 
+      // Funksjon for å generere partikler
+      const generateShards = (xOffset) =>
+        Array.from({ length: 40 }).map(() => ({
+          x: (Math.random() - 0.5) * 500,
+          y: (Math.random() - 0.5) * 300,
+          offsetX: xOffset + (Math.random() - 0.5) * 200,
+          color: Math.random() > 0.5 ? "#57C9D3" : "#ffffff",
+        }));
 
-const triggerMissionBoom = () => {
-  setBoomKey((k) => k + 1);
-  setTitleBoomed(true);
+      // Eksplosjon 1: SELECT
+      setTimeout(() => {
+        setShards(generateShards(-150));
+      }, 3200);
 
-
-  setShards(() => {
-    return Array.from({ length: 18 }).map(() => {
-      const angle = Math.random() * Math.PI * 2;
-      const dist = 160 + Math.random() * 220;
-      const x = Math.cos(angle) * dist;
-      const y = Math.sin(angle) * dist;
-
-      return {
-        x,
-        y,
-        d: 120 + Math.random() * 240,
-        s: 0.7 + Math.random() * 0.6,
-      };
-    });
-  });
-};
-
+      // Eksplosjon 2: MISSION
+      setTimeout(() => {
+        setShards((prev) => [...prev, ...generateShards(150)]);
+      }, 5000);
+    }, 600);
+  };
 
   // ---SCROLL-KNAPP---
   useEffect(() => {
@@ -62,7 +63,6 @@ const triggerMissionBoom = () => {
     }
   }, [hash]);
 
-
   // --- SPILLDATA ---
   const games = useMemo(
     () => [
@@ -79,49 +79,12 @@ const triggerMissionBoom = () => {
           >
             <span
               className="text-[70px] leading-[0.9] italic font-bold"
-              style={{
-                textShadow: `
-  -2px -2px 0 rgba(0,0,0,0.45),
-   2px -2px 0 rgba(0,0,0,0.45),
-  -2px  2px 0 rgba(0,0,0,0.45),
-   2px  2px 0 rgba(0,0,0,0.45),
-  -1px -1px 0 rgba(0,0,0,0.25),
-   1px -1px 0 rgba(0,0,0,0.25),
-  -1px  1px 0 rgba(0,0,0,0.25),
-   1px  1px 0 rgba(0,0,0,0.25)
-`,
-              }}
+              style={{ textShadow: "2px 2px 0 rgba(0,0,0,0.45)" }}
             >
               Memory
             </span>
-            <span
-              className="text-[65px] mt-[-20px] italic font-bold flex items-center"
-              style={{
-                textShadow: `
-  -2px -2px 0 rgba(0,0,0,0.45),
-   2px -2px 0 rgba(0,0,0,0.45),
-  -2px  2px 0 rgba(0,0,0,0.45),
-   2px  2px 0 rgba(0,0,0,0.45),
-  -1px -1px 0 rgba(0,0,0,0.25),
-   1px -1px 0 rgba(0,0,0,0.25),
-  -1px  1px 0 rgba(0,0,0,0.25),
-   1px  1px 0 rgba(0,0,0,0.25)
-`,
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: "'Schibsted Grotesk', sans-serif",
-                  fontWeight: "900",
-                  fontStyle: "normal",
-                  display: "inline-block",
-                  transform: "scale(1.2) translateY(3px)",
-                  marginRight: "-4px",
-                }}
-              >
-                g
-              </span>
-              ame
+            <span className="text-[65px] mt-[-20px] italic font-bold flex items-center">
+              game
             </span>
           </div>
         ),
@@ -134,25 +97,16 @@ const triggerMissionBoom = () => {
         path: "reactiongame",
         customTitle: (
           <div
-            className="flex flex-col items-center "
+            className="flex flex-col items-center"
             style={{ color: "#EBB99A" }}
           >
             <span
               className="text-[75px] leading-none italic font-bold"
-              style={{
-                textShadow:
-                  "3px 9px 0 #C34627, -3px -3px 0 #C34627, 3px -3px 0 #C34627, -3px 3px 0 #C34627",
-              }}
+              style={{ textShadow: "3px 9px 0 #C34627" }}
             >
               Reaction
             </span>
-            <span
-              className="text-[70px] mt-[-26px] italic font-bold"
-              style={{
-                textShadow:
-                  "3px 9px 0 #C34627, -3px -3px 0 #C34627, 3px -3px 0 #C34627, -3px 3px 0 #C34627",
-              }}
-            >
+            <span className="text-[70px] mt-[-26px] italic font-bold">
               Game
             </span>
           </div>
@@ -173,28 +127,11 @@ const triggerMissionBoom = () => {
               <span
                 key={i}
                 className="text-[54px] leading-[0.9] italic font-bold"
-                style={{
-                  textShadow: "3px 3px 0px #AB6FBE, 6px 6px 0px rgba(0,0,0,1)",
-                }}
+                style={{ textShadow: "3px 3px 0px #AB6FBE" }}
               >
                 {word}
               </span>
             ))}
-            <span
-              className="text-[75px] leading-[0.7] italic font-bold mt-1"
-              style={{
-                textShadow: `
-                  2px 2px 0 #AB6FBE, 
-                  -1px -1px 0 #AB6FBE, 
-                  3px 3px 0 #000, 
-                  -1px -1px 0 #000,
-                  4px 4px 5px rgba(0,0,0,0.8)
-                `,
-                WebkitTextStroke: "1px black",
-              }}
-            >
-              ?
-            </span>
           </div>
         ),
       },
@@ -202,109 +139,108 @@ const triggerMissionBoom = () => {
     [],
   );
 
- 
   return (
     <div className="relative min-h-screen bg-black overflow-hidden flex flex-col items-center justify-center">
-      {/* ---1. DET ANIMERTE GULVET (NEON ROSA)--- */}
+      {/* GRID GULV */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
           backgroundImage:
             "linear-gradient(to right, rgba(255, 19, 240, 0.5) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 19, 240, 0.5) 1px, transparent 1px)",
           backgroundSize: "50px 40px",
-          transform: "perspective(600px) rotateX(65deg) ",
+          transform: "perspective(600px) rotateX(65deg)",
           transformOrigin: "center top",
           animation: "moveRetroGrid 7s linear infinite",
           opacity: "0.6",
         }}
       ></div>
 
-      {/* SEKSJON 1 */}
+      {/* SEKSJON 1: HERO & ARCADE */}
       <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center px-4 lg:px-20 pt-0 lg:-mt-10 gap-12">
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
           <Hero onMissionBoom={triggerMissionBoom} />
         </div>
-
         <div className="w-full lg:w-1/2 flex justify-center py-0">
           <ArcadeMachine yellowCoin={"#FACC15"} />
         </div>
       </div>
 
-      {/* SEKSJON 2 */}
+      {/* SEKSJON 2: MISSION SELECT */}
       <section
         id="mission-select-full"
-        className="relative z-0 w-full py-10 bg-transparent border-none"
+        className="relative z-0 w-full py-10 bg-transparent"
       >
         <div className="max-w-[1400px] mx-auto px-6">
-          {/* --------fra her--------------------- */}
 
+          
           {/* TITLE WRAP */}
-          <div className="relative flex flex-col items-center justify-center mt-6 mb-0 min-h-[120px]">
+          <div className="relative flex flex-col items-center justify-center mt-4 mb-10 min-h-[140px]">
             {titleBoomed && (
               <>
-                {/* SELECT MISSION på én linje */}
-                <h2
-                  className="font-retro text-[8vw] md:text-[5vw] text-[#57C9D3] uppercase tracking-[0.15em] text-center whitespace-nowrap"
-                  style={{
-                    textShadow:
-                      "0 0 20px #57C9D3, 0 0 40px #57C9D3, 0 0 80px #00ffff",
-                    animation:
-                      "missionPop 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards",
-                    opacity: 0,
-                  }}
-                >
-                  <span
-                    style={{
-                      color: "#ffd700",
-                      textShadow: "0 0 20px #ffd700, 0 0 40px #ffaa00",
-                    }}
-                  >
-                    SELECT
-                  </span>{" "}
-                  MISSION
-                </h2>
-
-                {/* Understrek */}
                 <div
-                  className="h-1 bg-cyan-400 shadow-[0_0_20px_#00ffff] mt-4"
-                  style={{
-                    width: "150px",
-                    animation: "lineGrow 0.5s ease-out 0.8s forwards",
-                    transform: "scaleX(0)",
-                    opacity: 0,
-                  }}
-                />
-              </>
-            )}
+                  key={boomKey}
+                  className="flex flex-col items-center w-full z-10"
+                >
+                  <h2 className="font-retro text-[10vw] md:text-[6vw] uppercase flex flex-row items-center leading-none m-0">
+                    <span
+                      style={{
+                        animation: "textBoom 1.5s ease-out 3.2s forwards",
+                        opacity: 0,
+                        textShadow: "0 0 20px #57C9D3",
+                        color: "#57C9D3",
+                      }}
+                    >
+                      SELECT
+                    </span>
+                    <span
+                      style={{
+                        animation: "textBoom 1.5s ease-out 5.0s forwards",
+                        opacity: 0,
+                        textShadow: "0 0 20px #57C9D3",
+                        color: "#57C9D3",
+                      }}
+                      className="ml-6"
+                    >
+                      MISSION
+                    </span>
+                  </h2>
 
-            {/* Shards - med inline styles for variabler */}
-            {titleBoomed && (
-              <div className="pointer-events-none absolute inset-0">
-                {shards.map((shard, i) => (
-                  <span
-                    key={i}
-                    className="absolute top-1/2 left-1/2 w-1.5 h-4 rounded-sm"
+                  <div
+                    className="mission-underline"
                     style={{
-                      background:
-                        i % 2 === 0
-                          ? "linear-gradient(to bottom, #00ffff, rgba(0,255,255,0.5))"
-                          : "linear-gradient(to bottom, #ff00ff, rgba(255,0,255,0.5))",
-                      boxShadow: "0 0 10px currentColor",
-                      ["--x"]: `${shard.x}px`,
-                      ["--y"]: `${shard.y}px`,
-                      ["--s"]: shard.s,
-                      animation: `shardFly 0.8s ease-out ${1 + i * 0.03}s forwards`,
-                      opacity: 0,
+                      /* Laseren bruker nå 3.5 sekunder på å scanne ferdig */
+                      animation:
+                        "laserScan 3.5s ease-in-out 0s forwards, finalPop 0.4s ease-out 4.0s forwards",
                     }}
                   />
-                ))}
-              </div>
+                </div>
+
+                {/* SHARDS SYSTEM */}
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                  {shards.map((shard, i) => (
+                    <span
+                      key={i}
+                      style={{
+                        position: "absolute",
+                        left: `calc(50% + ${shard.offsetX}px)`,
+                        width: "6px",
+                        height: "2px",
+                        background: shard.color,
+                        "--x": `${shard.x}px`,
+                        "--y": `${shard.y}px`,
+                        /* Partiklene trigges enten på 4s eller 6s basert på når de ble lagt til */
+                        animation: `shardFly 0.8s ease-out forwards`,
+                        boxShadow: `0 0 8px ${shard.color}`,
+                      }}
+                    />
+                  ))}
+                </div>
+              </>
             )}
           </div>
 
-          {/* -----------------------------------til her----- */}
-          {/* KORT */}
-          <div className="flex flex-col lg:flex-row justify-center items-center lg:items-stretch gap-14 lg:gap-16">
+          {/* GAME CARDS */}
+          <div className="flex flex-col lg:flex-row justify-center items-center lg:items-stretch gap-14 lg:gap-16 mt-12">
             {games.map((game) => (
               <div key={game.id} className="w-full max-w-[400px]">
                 <GameCard
@@ -320,13 +256,13 @@ const triggerMissionBoom = () => {
         </div>
       </section>
 
-      {/* SCROLL TOP BUTTON */}
+      {/* SCROLL TO TOP */}
       {showTopButton && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-10 right-10 z-[100] cursor-pointer group outline-none bg-transparent border-none"
+          className="fixed bottom-10 right-10 z-[100] bg-transparent border-none outline-none group"
         >
-          <div className="w-16 h-16 border-[6px] border-[#ff00ff] shadow-[0_0_20px_#ff00ff] rounded-full flex items-center justify-center bg-black/80 group-hover:scale-110 transition-all duration-300 group-hover:border-white">
+          <div className="w-16 h-16 border-[6px] border-[#ff00ff] shadow-[0_0_20px_#ff00ff] rounded-full flex items-center justify-center bg-black/80 group-hover:scale-110 transition-all">
             <svg
               width="32"
               height="32"
@@ -336,7 +272,6 @@ const triggerMissionBoom = () => {
               strokeWidth="4"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="transition-colors duration-300 group-hover:animate-bounce group-hover:stroke-white"
             >
               <path d="M12 18V6M6 12l6-6 6 6" />
             </svg>

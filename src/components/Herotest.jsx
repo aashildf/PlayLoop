@@ -55,7 +55,7 @@ export default function Hero({ onMissionBoom }) {
         setIsFlashing(false);
         setIsCoinAnimating(false);
       }, 800);
-    }, 3000);
+    }, 2600);
   };
 
   return (
