@@ -1,37 +1,40 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Lottie from "lottie-react";
 import coinData from "../assets/coin.json";
-
-
 
 export default function Hero({ onMissionBoom }) {
   const [isFlashing, setIsFlashing] = useState(false);
   const [isPoweringOff, setIsPoweringOff] = useState(false);
   const [isCoinAnimating, setIsCoinAnimating] = useState(false);
 
+  const audioRefs = useRef({});
+
+  const playSound = (soundName) => {
+    if (!audioRefs.current[soundName]) {
+      audioRefs.current[soundName] = new Audio(`audio/${soundName}`);
+    }
+    const audio = audioRefs.current[soundName];
+    audio.currentTime = 0;
+    audio.play().catch(() => {});
+  };
 
   const handleStart = () => {
-    // coin ping-lyd
-    new Audio("audio/coin_flip.wav").play().catch(() => {});
+    playSound("coin_flip.wav");
     setIsCoinAnimating(true);
 
+    setTimeout(() => {
+      playSound("coin_drop.mp3");
+    }, 400);
 
-    // spill coin-drop-lyd
-    new Audio("audio/coin_drop.mp3").play().catch(() => {});
-    
-
-    // vent til coin-animation  er ferdig
     setTimeout(() => {
       setIsFlashing(true);
-    }, 700);
+    }, 1000);
 
-    // vent litt til før skjermen lukker seg
     setTimeout(() => {
       setIsPoweringOff(true);
-      new Audio("audio/screen_buzz.mp3").play().catch(() => {});
-    },1100);
+      playSound("screen_buzz.mp3");
+    }, 1400);
 
-    // scroll og åpne igjen
     setTimeout(() => {
       const html = document.documentElement;
       const oldScroll = html.style.scrollBehavior;
@@ -43,7 +46,7 @@ export default function Hero({ onMissionBoom }) {
 
       html.style.scrollBehavior = oldScroll;
 
-      new Audio("audio/expand.mp3").play().catch(() => {});
+      playSound("expand.mp3");
 
       if (onMissionBoom) onMissionBoom();
 
@@ -51,8 +54,8 @@ export default function Hero({ onMissionBoom }) {
         setIsPoweringOff(false);
         setIsFlashing(false);
         setIsCoinAnimating(false);
-      }, 600);
-    }, 2000);
+      }, 800);
+    }, 3000);
   };
 
   return (
@@ -64,7 +67,7 @@ export default function Hero({ onMissionBoom }) {
         }`}
       >
         <div
-          className={`flex-1 bg-black transition-transform duration-[1000ms] ease-in-out relative ${
+          className={`flex-1 bg-black transition-transform duration-[1200ms] ease-in-out relative ${
             isPoweringOff ? "translate-y-0" : "-translate-y-full"
           }`}
         >
@@ -72,7 +75,7 @@ export default function Hero({ onMissionBoom }) {
         </div>
 
         <div
-          className={`flex-1 bg-black transition-transform duration-[1000ms] ease-in-out relative ${
+          className={`flex-1 bg-black transition-transform duration-[1200ms] ease-in-out relative ${
             isPoweringOff ? "translate-y-0" : "translate-y-full"
           }`}
         >
@@ -102,7 +105,7 @@ export default function Hero({ onMissionBoom }) {
             Welcome to the arcade <br></br>Insert coin & Choose your mission
           </p>
 
-          {/* ---MYNT--- */}
+          {/* MYNT - tilbake til original oppførsel + høyere arc */}
           <button
             onClick={handleStart}
             className="mt-8 group cursor-pointer flex flex-col items-center justify-center bg-transparent border-none"
@@ -110,11 +113,11 @@ export default function Hero({ onMissionBoom }) {
             <div
               className={`w-24 h-24 md:w-32 md:h-32 mb-2 ${
                 isCoinAnimating
-                  ? "animate-[coinArcDrop_0.8s_cubic-bezier(.2,.8,.2,1)_forwards]"
+                  ? "animate-[coinArcDrop_1.2s_cubic-bezier(.25,.46,.45,.94)_forwards]"
                   : ""
               }`}
             >
-              <Lottie animationData={coinData} loop autoplay />
+              <Lottie animationData={coinData} loop={true} autoplay={true} />
             </div>
 
             <p className="font-retro text-xl md:text-2xl text-yellow-400 tracking-[0.3em] animate-pulse group-hover:text-white transition-colors duration-300 text-center w-full">

@@ -1,4 +1,4 @@
-import Hero from "../components/Hero.jsx";
+import Hero from "../components/Herotest.jsx";
 import GameCard from "../components/GameCard.jsx";
 import ArcadeMachine from "../components/ArcadeMachine.jsx";
 import { useEffect, useMemo, useState } from "react";
@@ -22,7 +22,7 @@ const triggerMissionBoom = () => {
   setBoomKey((k) => k + 1);
   setTitleBoomed(true);
 
-  // generer shards én gang når boomet skjer
+
   setShards(() => {
     return Array.from({ length: 18 }).map(() => {
       const angle = Math.random() * Math.PI * 2;
@@ -236,30 +236,65 @@ const triggerMissionBoom = () => {
         className="relative z-0 w-full py-10 bg-transparent border-none"
       >
         <div className="max-w-[1400px] mx-auto px-6">
-          {/* TITLE WRAP */}
-          <div className="relative flex flex-col items-center justify-center mt-6 mb-0 min-h-[120px] overflow-visible">
-            <div className="min-h-[60px]" aria-hidden="true" />
+          {/* --------fra her--------------------- */}
 
+          {/* TITLE WRAP */}
+          <div className="relative flex flex-col items-center justify-center mt-6 mb-0 min-h-[120px]">
             {titleBoomed && (
-              <h2
-                key={boomKey}
-                className="mission-title title-boom font-retro text-5xl -mt- md:text-7xl text-[#57C9D3] uppercase tracking-widest text-center"
-              >
-                Select Mission
-              </h2>
+              <>
+                {/* SELECT MISSION på én linje */}
+                <h2
+                  className="font-retro text-[8vw] md:text-[5vw] text-[#57C9D3] uppercase tracking-[0.15em] text-center whitespace-nowrap"
+                  style={{
+                    textShadow:
+                      "0 0 20px #57C9D3, 0 0 40px #57C9D3, 0 0 80px #00ffff",
+                    animation:
+                      "missionPop 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards",
+                    opacity: 0,
+                  }}
+                >
+                  <span
+                    style={{
+                      color: "#ffd700",
+                      textShadow: "0 0 20px #ffd700, 0 0 40px #ffaa00",
+                    }}
+                  >
+                    SELECT
+                  </span>{" "}
+                  MISSION
+                </h2>
+
+                {/* Understrek */}
+                <div
+                  className="h-1 bg-cyan-400 shadow-[0_0_20px_#00ffff] mt-4"
+                  style={{
+                    width: "150px",
+                    animation: "lineGrow 0.5s ease-out 0.8s forwards",
+                    transform: "scaleX(0)",
+                    opacity: 0,
+                  }}
+                />
+              </>
             )}
 
+            {/* Shards - med inline styles for variabler */}
             {titleBoomed && (
               <div className="pointer-events-none absolute inset-0">
                 {shards.map((shard, i) => (
                   <span
                     key={i}
-                    className="title-shard"
+                    className="absolute top-1/2 left-1/2 w-1.5 h-4 rounded-sm"
                     style={{
-                      "--x": `${shard.x}px`,
-                      "--y": `${shard.y}px`,
-                      "--d": `${shard.d}ms`,
-                      "--s": `${shard.s}`,
+                      background:
+                        i % 2 === 0
+                          ? "linear-gradient(to bottom, #00ffff, rgba(0,255,255,0.5))"
+                          : "linear-gradient(to bottom, #ff00ff, rgba(255,0,255,0.5))",
+                      boxShadow: "0 0 10px currentColor",
+                      ["--x"]: `${shard.x}px`,
+                      ["--y"]: `${shard.y}px`,
+                      ["--s"]: shard.s,
+                      animation: `shardFly 0.8s ease-out ${1 + i * 0.03}s forwards`,
+                      opacity: 0,
                     }}
                   />
                 ))}
@@ -267,6 +302,7 @@ const triggerMissionBoom = () => {
             )}
           </div>
 
+          {/* -----------------------------------til her----- */}
           {/* KORT */}
           <div className="flex flex-col lg:flex-row justify-center items-center lg:items-stretch gap-14 lg:gap-16">
             {games.map((game) => (
