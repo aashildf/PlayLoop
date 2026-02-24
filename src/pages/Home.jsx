@@ -79,12 +79,49 @@ export default function Home3() {
           >
             <span
               className="text-[70px] leading-[0.9] italic font-bold"
-              style={{ textShadow: "2px 2px 0 rgba(0,0,0,0.45)" }}
+              style={{
+                textShadow: `
+  -2px -2px 0 rgba(0,0,0,0.45),
+   2px -2px 0 rgba(0,0,0,0.45),
+  -2px  2px 0 rgba(0,0,0,0.45),
+   2px  2px 0 rgba(0,0,0,0.45),
+  -1px -1px 0 rgba(0,0,0,0.25),
+   1px -1px 0 rgba(0,0,0,0.25),
+  -1px  1px 0 rgba(0,0,0,0.25),
+   1px  1px 0 rgba(0,0,0,0.25)
+`,
+              }}
             >
               Memory
             </span>
-            <span className="text-[65px] mt-[-20px] italic font-bold flex items-center">
-              game
+            <span
+              className="text-[65px] mt-[-20px] italic font-bold flex items-center"
+              style={{
+                textShadow: `
+  -2px -2px 0 rgba(0,0,0,0.45),
+   2px -2px 0 rgba(0,0,0,0.45),
+  -2px  2px 0 rgba(0,0,0,0.45),
+   2px  2px 0 rgba(0,0,0,0.45),
+  -1px -1px 0 rgba(0,0,0,0.25),
+   1px -1px 0 rgba(0,0,0,0.25),
+  -1px  1px 0 rgba(0,0,0,0.25),
+   1px  1px 0 rgba(0,0,0,0.25)
+`,
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "'Schibsted Grotesk', sans-serif",
+                  fontWeight: "900",
+                  fontStyle: "normal",
+                  display: "inline-block",
+                  transform: "scale(1.2) translateY(3px)",
+                  marginRight: "-4px",
+                }}
+              >
+                g
+              </span>
+              ame
             </span>
           </div>
         ),
@@ -101,12 +138,21 @@ export default function Home3() {
             style={{ color: "#EBB99A" }}
           >
             <span
-              className="text-[75px] leading-none italic font-bold"
-              style={{ textShadow: "3px 9px 0 #C34627" }}
+              className="text-[68px] leading-none italic font-bold"
+              style={{
+                textShadow:
+                  "3px 8px 0 #A53010, -3px -3px 0 #A53010, 3px -3px 0 #A53010, 3px -3px 0 #A53010",
+              }}
             >
               Reaction
             </span>
-            <span className="text-[70px] mt-[-26px] italic font-bold">
+            <span
+              className="text-[64px] mt-[-22px] italic font-bold"
+              style={{
+                textShadow:
+                  "3px 8px 0 #A53010, -3px -3px 0 #A53010, 3px -3px 0 #A53010, 3px -3px 0 #A53010",
+              }}
+            >
               Game
             </span>
           </div>
@@ -123,11 +169,18 @@ export default function Home3() {
             className="flex flex-col items-center mt-[-40px]"
             style={{ color: "#6BCFC2" }}
           >
-            {["Super", "Secret", "Game"].map((word, i) => (
+            {["Super", "Secret", "Game", "?"].map((word, i) => (
               <span
                 key={i}
-                className="text-[54px] leading-[0.9] italic font-bold"
-                style={{ textShadow: "3px 3px 0px #AB6FBE" }}
+                className="text-[54px] leading-[0.8] italic font-bold"
+                style={{
+                  color: "#6BCFC2", // Hovedfarge
+                  textShadow: `
+        3px 3px 0px #AB6FBE, 
+        5px 5px 0px rgba(0,0,0,0.8),
+        -1px -1px 0px rgba(0,0,0,0.5)
+      `,
+                }}
               >
                 {word}
               </span>
@@ -171,8 +224,6 @@ export default function Home3() {
         className="relative z-0 w-full py-10 bg-transparent"
       >
         <div className="max-w-[1400px] mx-auto px-6">
-
-          
           {/* TITLE WRAP */}
           <div className="relative flex flex-col items-center justify-center mt-4 mb-10 min-h-[140px]">
             {titleBoomed && (
@@ -240,7 +291,7 @@ export default function Home3() {
           </div>
 
           {/* GAME CARDS */}
-          <div className="flex flex-col lg:flex-row justify-center items-center lg:items-stretch gap-14 lg:gap-16 mt-12">
+          <div className="relative z-20 flex flex-col lg:flex-row justify-center items-center lg:items-stretch gap-14 lg:gap-16 mt-12">
             {games.map((game) => (
               <div key={game.id} className="w-full max-w-[400px]">
                 <GameCard

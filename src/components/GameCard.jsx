@@ -34,70 +34,77 @@ export default function GameCard({
       style={{ perspective: "1500px" }}
     >
       {/* SELVE KORTET */}
-      <Link to={path} className="block" style={{ transformStyle: "preserve-3d" }}> 
-      <motion.div
-        onMouseMove={handleMouseMove}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => {
-          x.set(0);
-          y.set(0);
-          setIsHovered(false);
-        }}
-        style={{
-          rotateX,
-          rotateY,
-          transformStyle: "preserve-3d",
-          transform: "translateZ(0)",
-          backgroundColor: "#EAE3D6",
-        }}
-        className="relative w-[340px] h-[500px] rounded-[40px] flex flex-col items-center shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-visible cursor-pointer border border-black/5"
+      <Link
+        to={path}
+        className="block"
+        style={{ transformStyle: "preserve-3d" }}
       >
-        {/* NEON - GLOW UNDER KORTET */}
-        <div
-          className="absolute -inset-20 blur-[100px] rounded-full opacity-60 pointer-events-none -z-50"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(59,130,246,0.6) 0%, rgba(236,72,153,0.6) 50%, rgba(0,0,0,0) 100%)",
-            transform: "translateZ(-80px) translateY(20px)",
+        <motion.div
+          onMouseMove={handleMouseMove}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => {
+            x.set(0);
+            y.set(0);
+            setIsHovered(false);
           }}
-        />
-
-        {/* PAPIR-TEKSTUR */}
-        <div
-          className="absolute inset-0 rounded-[40px] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden border border-black/5"
           style={{
-            backgroundImage: `url(${image})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
+            rotateX,
+            rotateY,
+            transformStyle: "preserve-3d",
+            transform: "translateZ(0)",
             backgroundColor: "#EAE3D6",
           }}
+          className="relative w-[340px] h-[500px] rounded-[40px] flex flex-col items-center shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-visible cursor-pointer border border-black/5"
         >
+          {/* NEON - GLOW UNDER KORTET */}
           <div
-            className="absolute inset-0 opacity-[0.3] mix-blend-multiply"
+            className="absolute -inset-20 blur-[100px] rounded-full opacity-60 pointer-events-none -z-50"
             style={{
-              backgroundImage: `url('https://www.transparenttextures.com/patterns/cardboard-flat.png')`,
+              background:
+                "radial-gradient(circle, rgba(59,130,246,0.6) 0%, rgba(236,72,153,0.6) 50%, rgba(0,0,0,0) 100%)",
+              transform: "translateZ(-80px) translateY(20px)",
+            }}
+          />
+
+          {/* PAPIR-TEKSTUR */}
+          <div
+            className="absolute inset-0 rounded-[40px] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden border border-black/5"
+            style={{
+              backgroundImage: `url(${image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundColor: "#EAE3D6",
             }}
           >
-            <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.1)] pointer-events-none" />
+            <div
+              className="absolute inset-0 opacity-[0.3] mix-blend-multiply"
+              style={{
+                backgroundImage: `url('https://www.transparenttextures.com/patterns/cardboard-flat.png')`,
+              }}
+            >
+              <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.1)] pointer-events-none" />
+            </div>
+
+            <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]" />
           </div>
 
-          <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]" />
-        </div>
-
-        {/*  TITTEL-SVEVENDE —  */}
-        <div
-          className="absolute z-[999] w-full pointer-events-none"
-          style={{
-            top: "42%",
-            left: "50%",
-            transform: "translateX(-50%) translateZ(120px)",
-            transformStyle: "preserve-3d",
-          }}
-        >
-          {customTitle}
-        </div>
-      </motion.div>
-</Link>
+          {/*  TITTEL-SVEVENDE —  */}
+          <div
+            className="absolute w-full pointer-events-none"
+            style={{
+              top: "42%",
+              left: "50%",
+              zIndex: 999, // Forsterket z-index
+              transform: "translateX(-50%) translateZ(120px)",
+              transformStyle: "preserve-3d",
+              /* Legg til denne for å tvinge nettleseren til å tegne skyggen separat */
+              willChange: "transform",
+            }}
+          >
+            {customTitle}
+          </div>
+        </motion.div>
+      </Link>
 
       {/* PLAY NOW - TURBO-KNAPP */}
       <div

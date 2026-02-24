@@ -118,7 +118,6 @@ body {
     }
 
     /* Bakgrunnsmønster, Bricks */
-
   .brick-pattern {
    background-color: #0a0a12;
   background-image:  
@@ -139,15 +138,15 @@ body {
   height: 100vh !important;
   pointer-events: none !important;
   /* ekstremt høy z-index for å ligge over absolutt alt */
-  z-index: 999999 !important;
+  z-index: 9999 !important;
   
-  /* CSS-gradient som lager svarte striper.(background-size: 100% 3px- denne kan endres til 4 eller 1 for mer/mindre effekt) */
+  /* CSS-gradient som lager svarte striper.*/
   background: linear-gradient(
     rgba(18, 16, 16, 0) 50%, 
-    rgba(0, 0, 0, 0.2) 50%
+    rgba(0, 0, 0, 0.15) 50% 
   );
-  background-size: 100% 3px;
-  opacity: 1;
+  background-size: 100% 2px; 
+  opacity: 0.8;
 }
 
     /* Font-familiene */
@@ -226,8 +225,7 @@ body {
 
 
 
-/* === SELECT MISSION ANIMasjoner === */
-
+/* === --------SELECT MISSION ANIMasjoner =----------== */
 
 /* Sakte vokse- og krympe-effekt for teksten */
 @keyframes textBoom {
@@ -264,7 +262,7 @@ body {
   opacity: 0;
 }
 
-/* 1. Laserscan som går over hele linjen */
+
 
 @keyframes laserScan {
   0% { transform: scaleX(0); transform-origin: left; opacity: 0; }
@@ -279,14 +277,4 @@ body {
 @keyframes finalPop {
   0% { transform: scaleX(1); opacity: 0; filter: brightness(10); }
   100% { transform: scaleX(1); opacity: 1; filter: brightness(1); }
-}
-
-/* Sørg for at understreken har en grunn-stil som fungerer */
-.mission-underline {
-  height: 4px;
-  background: #00ffff;
-  box-shadow: 0 0 20px #00ffff;
-  width: 100%;
-  max-width: 600px;
-  opacity: 0; /* Starter usynlig helt til laserScan tar over */
 }
