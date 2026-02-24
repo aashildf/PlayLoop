@@ -201,7 +201,7 @@ export default function Home3() {
       ></div>
 
       {/* SEKSJON 1: HERO & ARCADE */}
-      <div className="relative z-10 flex flex-col xl:flex-row items-center justify-center px-4 lg:px-20 lg:pt-32 md:pt-48 xl:pt-0 gap-8">
+      <div className="relative z-10 flex flex-col xl:flex-row items-center justify-center px-4 lg:px-20  lg:pt-32 pt-10 md:pt-12 xl:pt-0 gap-8">
         {/* hero text */}
         <div className="relative z-10 flex flex-col xl:flex-row items-center justify-between px-4 lg:px-20 pt-20 md:pt-32 lg:pt-52 xl:pt-0 gap-8 min-h-[85vh] xl:min-h-screen pb-10">
           <div className="w-full xl:w-1/2 flex justify-center xl:justify-end">
@@ -218,7 +218,7 @@ export default function Home3() {
       {/* -SEKSJON 2: SPILLVALG*/}
       <section
         id="mission-select-full"
-        className="relative z-0 w-full pt-4 md:pt-8 xl:pt-10 pb-10 bg-transparent overflow-hidden"
+        className="relative z-0 w-full pt-4 md:pt-8 xl:pt-10 pb-40 bg-transparent overflow-hidden"
       >
         <div className="max-w-[1400px] mx-auto px-6">
           {/* TITLE WRAP */}
@@ -309,15 +309,16 @@ export default function Home3() {
           <div
             className="
   relative z-20
-  -mt-30 md:mt-0
+  -mt-35 md:mt-15
   
   flex 
   overflow-x-auto 
   snap-x snap-mandatory 
   scroll-smooth
   hide-scrollbar
+  justify-start
+  px-4 md:px-10
   gap-0
-  px-10
   pb-20
   /* Desktop-reset: */
   lg:flex-row lg:justify-center lg:overflow-visible lg:snap-none lg:px-0
@@ -327,12 +328,12 @@ export default function Home3() {
               <div
                 key={game.id}
                 className="
-        snap-center shrink-0 
-        /* MOBIL-FIX: Krymp kortet og dra inn margene så de ikke overlapper eller har gap */
-        scale-[0.75] -mx-8 
-        /* NETTBRETT/DESKTOP-RESET: Full størrelse og normale marger */
-        md:scale-100 md:mx-4
-      "
+    snap-center shrink-0 
+    /* Vi krymper mer på SE (scale-0.7) og litt mindre på større mobiler (0.8) */
+    scale-[0.7] sm:scale-[0.8] md:scale-100 
+    /* Juster marginene så de ikke overlapper for mye når vi krymper */
+    -mx-12 sm:-mx-8 md:mx-4
+  "
               >
                 <GameCard
                   title={game.title}

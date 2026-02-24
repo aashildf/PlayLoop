@@ -30,7 +30,7 @@ export default function GameCard({
 
   return (
     <div
-      className="py-24 flex justify-center items-center"
+      className="py-10 lg:py-24 flex justify-center items-center"
       style={{ perspective: "1500px" }}
     >
       {/* SELVE KORTET */}
@@ -106,7 +106,7 @@ export default function GameCard({
         </motion.div>
       </Link>
 
-      {/* PLAY NOW - TURBO-KNAPP */}
+      {/* PLAY NOW - TURBO-KNAPP SKJULT PÅ MOBIL/IPAD (hidden), VISES PÅ DESKTOP (lg:flex) **/}
       <div
         className="absolute -bottom-1 left-0 w-full flex justify-center"
         style={{
