@@ -105,7 +105,7 @@ export default function Hero({ onMissionBoom }) {
             Welcome to the arcade <br></br>Insert coin & Choose your mission
           </p>
 
-          {/* MYNT - tilbake til original oppførsel + høyere arc */}
+          {/* MYNT - sprett */}
           <button
             onClick={handleStart}
             className="mt-8 group cursor-pointer flex flex-col items-center justify-center bg-transparent border-none"

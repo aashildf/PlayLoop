@@ -108,7 +108,7 @@ export default function GameCard({
 
       {/* PLAY NOW - TURBO-KNAPP SKJULT PÅ MOBIL/IPAD (hidden), VISES PÅ DESKTOP (lg:flex) **/}
       <div
-        className="absolute -bottom-1 left-0 w-full flex justify-center"
+        className="absolute -bottom-1 left-0 w-full hidden lg:flex justify-center"
         style={{
           transform: "translateZ(120px)",
           transformStyle: "preserve-3d",
