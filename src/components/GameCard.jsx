@@ -88,7 +88,7 @@ export default function GameCard({
             <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.2)]" />
           </div>
 
-          {/*  TITTEL-SVEVENDE —  */}
+          {/*  TITTEL-SVEVENDE — ()kun på desktop) */}
           <div
             className="absolute w-full pointer-events-none"
             style={{
@@ -99,6 +99,8 @@ export default function GameCard({
               transformStyle: "preserve-3d",
               /* Legg til denne for å tvinge nettleseren til å tegne skyggen separat */
               willChange: "transform",
+              /* Skjuler teksten helt med mindre vi faktisk hovrer med en mus */
+              opacity: isHovered ? 1 : 0,
             }}
           >
             {customTitle}

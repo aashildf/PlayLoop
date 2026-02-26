@@ -172,7 +172,6 @@ body {
     pointer-events: none;
     z-index: 10;
     }
-
 }
 
 
@@ -194,7 +193,6 @@ body {
     4px 100%, 4px calc(100% - 4px), 0 calc(100% - 4px)
   );
 }
-
 
 /* hjelper på farten til kortene */
 .will-change-transform {
@@ -225,7 +223,7 @@ body {
 
 
 
-/* === --------SELECT MISSION ANIMasjoner =----------== */
+/* -----------SELECT MISSION ANIMasjoner =----------- */
 
 /* Sakte vokse- og krympe-effekt for teksten */
 @keyframes textBoom {
@@ -275,10 +273,6 @@ body {
 }
 
 
-/* @keyframes finalPop {
-  0% { transform: scaleX(1); opacity: 0; filter: brightness(10); }
-  100% { transform: scaleX(1); opacity: 1; filter: brightness(1); }
-} */
 
 @keyframes finalPop {
   0% {
@@ -292,7 +286,7 @@ body {
 }
 
 .mission-underline {
-  width: 260px; /* Perfekt for mobil */
+  width: 260px; /* passer fint for mobil */
   height: 4px;
   background: #57C9D3;
   box-shadow: 0 0 15px #57C9D3;
@@ -303,4 +297,179 @@ body {
   .mission-underline {
     width: 600px; /* Går tilbake til stor bredde på iPad/PC */
   }
+}
+
+
+
+/* ----------------------------------------------------- */
+/* -------------MOBIL OG MINDRE SKJERMER---------------- */
+/* ----------------------------------------------------- */
+
+
+/* --- MOBIL-JUSTERINGER (Under 768px) --- */
+@media (max-width: 767px) {
+ 
+  .py-10 {
+    padding-top: 0px !important; 
+    padding-bottom: 0px !important; /* Fjern padding i toppen og bunnen av selve kortet */
+  }
+
+.hide-scrollbar {
+    min-height: 460px !important; /* Litt høyere for å gi plass til både tekst og prikker */
+    display: flex !important;
+    align-items: center !important; /* Sentrerer kortet vertikalt i sin tildelte plass */
+    padding-bottom: 60px !important; /* Dedikert plass til prikkene helt nederst */
+    margin-top: 20px !important;
+ 
+    gap: 40px !important; /* Gir mer luft mellom kortene */
+    padding-left: 50px !important; /* Hjelper med å "lande" midt på */
+    padding-right: 50px !important;
+    scroll-snap-type: x mandatory; /* Tvinger den til å lande på et kort */
+  }
+
+  /* hvert kort "snapper" til midten */
+  .hide-scrollbar > div {
+    scroll-snap-align: center;
+  }
+
+  /* Flytter kortene litt ned pga. knappen er borte */
+  #mission-select-full {
+    padding-top: 50px !important;
+  }
+}
+
+
+
+
+/* ----------------------------------------------- */
+/* --- iPAD PRO JUSTERING (1024px til 1366px) --- */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  
+
+  /* Dytter Play Loop og Mynt lenger ned */
+  .relative.z-10.flex-col {
+    padding-top: 15vh !important; 
+  }
+
+  /* Større hero-tekst */
+  .font-neon, 
+  .font-neon span,
+  h1.font-neon {
+    font-size: 15vw !important; 
+    line-height: 0.9 !important;
+    display: block !important;
+  }
+
+  /* større select mission-tekst */
+  #mission-select-full h2.font-retro,
+  #mission-select-full h2 span {
+    font-size: 12vw !important; /* Gjør denne større på iPad Pro */
+    text-align: center !important;
+  }
+
+/* Litt mindre kort */
+  .shrink-0 {
+    transform: scale(0.82) !important; 
+    /* mellomrom mellom kortene */
+    margin-left: -10px !important;
+    margin-right: -10px !important;
+  }
+
+  .hide-scrollbar {
+    /*  et lite positivt gap i tillegg for å kontrollere luften */
+    gap: 15px !important; 
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    overflow: visible !important;
+    width: 100% !important;
+  }
+
+  /* Sørge for at ingenting tvinger dem til venstre */
+  .hide-scrollbar > div {
+    scroll-snap-align: none !important;
+    flex-shrink: 0 !important;
+  }
+
+  #mission-select-full {
+    padding-top: 0px !important;
+    padding-bottom: 40px !important;
+  }
+}
+
+
+
+/* ------------------------------------------------------- */
+/*- iPHONE SE / SMÅ/LAVE SKJERMER (Spesifikk høyde-fiks) - */
+@media (max-height: 700px) {
+
+/* 1. Flytt Hero-seksjonen oppover */
+  .relative.z-10.flex-col {
+    padding-top: 40px !important; /* Redusert fra 60-80px */
+    margin-bottom: 0 !important;
+  }
+
+  /* 4.  "Select Mission" starter litt høyere */
+  #mission-select-full {
+    margin-top: -20px !important;
+  }
+
+  .shrink-0 {
+    transform: scale(0.85) !important; /* krymper kortene*/
+    margin-top: -80px !important; /* Drar kortene  opp*/
+  }
+  
+  .hide-scrollbar {
+    min-height: 380px !important;
+    padding-bottom: 40px !important;
+  }
+}
+
+
+
+/* --------------------------------------------------------- */
+/* ------------TILPASNING FOR DESKTOP----------------------- */
+@media (min-width: 1280px) {
+
+
+  #mission-select-full h2 {
+    font-size: 80px !important; /* Låser størrelsen litt mer på PC */
+  }
+
+  .shrink-0 {
+    transform: scale(1) !important; /* Full størrelse på desktop */
+    margin: 0 20px !important; /* Litt luft mellom kort */
+  }
+
+  .hide-scrollbar {
+    justify-content: center !important;
+    display: flex !important;
+    gap: 30px !important;
+    margin-top: 0 !important;
+  }
+
+  
+  /* 4.  "Select Mission" starter litt høyere */
+  #mission-select-full {
+    margin-top: -30px !important;
+   
+  }
+  
+/* 1. Dra hele seksjonen (inkl. overskrift) opp mot Hero */
+  #mission-select-full {
+    margin-top: -140px !important; /* Øk dette tallet for å dra det enda høyere */
+    padding-top: 0 !important;
+  }
+}
+
+
+
+/* --------------------------------------------------- */
+/* --- FIX FOR Å SKJULE SCROLLBAR PÅ ALLE ENHETER --- */
+.hide-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none !important;
 }
