@@ -48,12 +48,14 @@ export default function Header2() {
         className={`fixed inset-0 z-[105] bg-black/95 backdrop-blur-md flex flex-col items-center justify-center transition-all duration-500 ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
       >
         <div className="flex flex-col gap-10 text-center">
-          {["Home", "Games", "About"].map((item) => {
+          {["Home", "Games", "Highscores", "About"].map((item) => {
             // logikk for stier
             let path = "/";
             if (item === "About") path = "/about";
-           if (item === "Games") path = "/";
-          
+            if (item === "Games") path = "/";
+            if (item === "Highscores") path = "/highscores";
+            // Home og Games sender oss begge til "/" (forsiden),
+            // men Games har ekstra scroll-logikk i onClick nedenfor.
 
             return (
               <Link
@@ -62,9 +64,9 @@ export default function Header2() {
                 onClick={() => {
                   setIsOpen(false);
 
-                   if (item === "Home") {
-                     window.scrollTo({ top: 0, behavior: "smooth" });
-                   }
+                  if (item === "Home") {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
 
                   if (item === "Games") {
                     setTimeout(() => {

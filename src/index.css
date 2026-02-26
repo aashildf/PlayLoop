@@ -473,3 +473,37 @@ body {
 .hide-scrollbar::-webkit-scrollbar {
   display: none !important;
 }
+
+
+
+
+/* ---------------------------------------------------------- */
+/* --- SPESIFIKK TILPASNING FOR SYSTEM-BOKSER (About/Highscores) --- */
+@media (max-width: 767px) {
+  
+  /* Vi treffer kun boksene som ligger inne i disse spesifikke sidene */
+  .brick-pattern .max-w-3xl, 
+  .brick-pattern .max-w-2xl {
+    margin-top: -20px !important; /* Drar boksen litt opp */
+    padding: 20px !important;    /* Mindre indre luft */
+    width: 95% !important;       /* Bruker mer av skjermbredden */
+  }
+
+  /* Reduserer skriftstørrelsen  på mobil */
+  .brick-pattern h1 {
+    font-size: 2.5rem !important; 
+    margin-bottom: 1rem !important;
+  }
+
+  /* Justerer teksten inni så den tar mindre vertikal plass */
+  .brick-pattern .text-2xl, 
+  .brick-pattern .text-3xl {
+    font-size: 1.1rem !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Reduserer mellomrom mellom avsnittene */
+  .brick-pattern .space-y-6 > * + * {
+    margin-top: 1rem !important;
+  }
+}
