@@ -62,22 +62,30 @@ body {
 
 
 
-/* --- ANIMASJONER --- */
+/* --- ANIMASJONER PLAY LOOP--- */
 
-/* Animasjon for blinking */
+
 @keyframes flicker {
-    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
-    20%, 22%, 24%, 55% { opacity: 0.4; }
+    0%, 18%, 22%, 25%, 53%, 57%, 100% { 
+        opacity: 1; 
+        filter: brightness(1);
+    }
+    20%, 24%, 55% { 
+        opacity: 0.8; 
+        filter: brightness(0.8); 
+    }
 }
+
+
 .animate-flicker {
-    animation: flicker 2s infinite; 
+    animation: flicker 5s infinite; 
 }
 
 /* Farger og glød til "Neonskilt/header" */
 @layer components {
     .neon-text-pink {
-        text-shadow: 0 0 5px #fff, 0 0 10px #f0f, 0 0 20px #f0f;
-    }
+    text-shadow: 0 0 5px #fff, 0 0 10px #f0f, 0 0 20px #f0f, 0 0 40px #f0f; 
+}
     .neon-text-cyan {
         text-shadow: 0 0 5px #fff, 0 0 10px #00f2ff, 0 0 20px #00f2ff;
     }
@@ -95,7 +103,8 @@ body {
     }
 
 
-/* --- RETRO GRID SYSTEM --- */
+    /* --------------------------------------------- */
+/* ----------------- RETRO GRID SYSTEM ------------ */
 
 .perspective-wrapper {
   position: relative;
@@ -298,6 +307,8 @@ body {
     width: 600px; /* Går tilbake til stor bredde på iPad/PC */
   }
 }
+
+
 
 
 
