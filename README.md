@@ -1,16 +1,36 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# PLAYLOOP
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p align="center">
+  <img src="images/preview.png" alt="PLAYLOOP Preview" width="600">
+</p>
 
-## React Compiler
+[👉 Se PLAYLOOP live her!](https://aashildf.github.io/PlayLoop/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+PLAYLOOP er en interaktiv webplattform inspirert av retro spillestetikk og moderne design. Prosjektet fungerer som en portal til ulike spillmoduler og et omfattende designsystem, pakket inn i et nostalgisk 80-talls visuelt uttrykk.
 
-## Expanding the ESLint configuration
+## Konsept
+Prosjektet er bygget rundt følelsen av en klassisk arkadehall. Ved hjelp av lydeffekter, neon-elementer og CRT-filtre, tas brukeren med fra en "Insert Coin"-forside og videre inn i et univers av spill og visuelle komponenter.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Min rolle & Utvikling
+Som ansvarlig for **Interface & Portal Architecture**, har jeg stått for utviklingen av rammeverket og den tekniske infrastrukturen for å få siden live:
+
+* **Deployment & CI/CD:** Jeg har satt opp GitHub Actions for automatisk utrulling til GitHub Pages. Dette innebærer overgang fra kun kildekode til en aktiv, fungerende nettside.
+* **Portal-arkitektur:** Konfigurering av ruting-logikk (React Router) med `basename` for å håndtere undermapper i produksjonsmiljø.
+* **Hero & Interface:** Design og koding av forsiden med Lottie-animasjoner, lyd-integrasjon og komplekse overgangseffekter.
+* **Arcade Interface:** Konstruksjon av den visuelle arkademaskinen og integrering av Scoreboard og navigasjonselementer.
+* **Designsystem:** Utvikling av en komplett visuell profil med gjenbrukbare komponenter som knapper og kort med parallax-effekter.
+
+## Oppgavefordeling (Originalt team)
+Prosjektet startet som et samarbeid der vi hadde ulike fokusområder:
+* **Åshild:** Interface, portal-arkitektur og overordnet frontend.
+* **Lene Renate:** Backend og integrasjon.
+* **Mia:** Memory Game-modulen.
+* **Therese:** Reaction Game-modulen.
+
+## Teknisk oppsett
+* **Frontend:** React + Vite
+* **Styling:** Tailwind CSS
+* **Animasjoner:** Framer Motion & Lottie-react
+* **Hosting:** GitHub Pages
