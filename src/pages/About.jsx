@@ -11,10 +11,10 @@ const SingleLetterParticle = ({ letter }) => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d", { willReadFrequently: true });
-    
+
     const initParticles = () => {
       //  ekstra plass rundt hver bokstav for eksplosjonen
-      const size = 100; 
+      const size = 100;
       canvas.width = size;
       canvas.height = size;
 
@@ -47,7 +47,7 @@ const SingleLetterParticle = ({ letter }) => {
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.current.forEach(p => {
+      particles.current.forEach((p) => {
         if (hovering) {
           p.curX += p.vx;
           p.curY += p.vy;
@@ -69,16 +69,16 @@ const SingleLetterParticle = ({ letter }) => {
   }, [hovering, letter]);
 
   return (
-    <span 
+    <span
       ref={containerRef}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
       className="relative inline-block w-[18px] h-[30px] cursor-pointer"
     >
-      <canvas 
-        ref={canvasRef} 
+      <canvas
+        ref={canvasRef}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-        style={{ width: '100px', height: '100px' }}
+        style={{ width: "100px", height: "100px" }}
       />
     </span>
   );
