@@ -11,7 +11,7 @@ export default function Hero({ onMissionBoom }) {
 
   const playSound = (soundName) => {
     if (!audioRefs.current[soundName]) {
-      audioRefs.current[soundName] = new Audio(`audio/${soundName}`);
+      audioRefs.current[soundName] = new Audio(`/PlayLoop/audio/${soundName}`);
     }
     const audio = audioRefs.current[soundName];
     audio.currentTime = 0;

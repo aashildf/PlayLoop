@@ -7,7 +7,7 @@ const ArcadeMachine = ({ yellowCoin }) => {
     <div className="relative flex items-center justify-center min-h-screen overflow-hidden">
       <div className="hidden md:block relative">
         <img
-          src="images/arcade_machine.png"
+          src="/PlayLoop/images/arcade_machine.png"
           alt="Arcade Machine"
           className="h-[130vh] w-auto object-contain drop-shadow-[0_0_50px_rgba(216,59,210,0.3)]"
           style={{ maxWidth: "none" }}

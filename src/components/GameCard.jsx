@@ -28,6 +28,8 @@ export default function GameCard({
     y.set((e.clientY - rect.top) / rect.height - 0.5);
   };
 
+const imagePath = image?.startsWith("http") ? image : `/PlayLoop/${image}`;
+
   return (
     <div
       className="py-10 lg:py-24 flex justify-center items-center"
@@ -65,17 +67,17 @@ export default function GameCard({
               transform: "translateZ(-80px) translateY(20px)",
             }}
           />
-
-          {/* PAPIR-TEKSTUR */}
+          {/* PAPIR-TEKSTUR  OG BILDE*/}
           <div
             className="absolute inset-0 rounded-[40px] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden border border-black/5"
             style={{
-              backgroundImage: `url(${image})`,
+              backgroundImage: `url(${imagePath})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundColor: "#EAE3D6",
             }}
           >
+            {/* PAPIR-TEKSTUR */}
             <div
               className="absolute inset-0 opacity-[0.3] mix-blend-multiply"
               style={{

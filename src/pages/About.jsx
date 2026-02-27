@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const SingleLetterParticle = ({ letter }) => {
@@ -135,12 +136,11 @@ export default function About() {
 
         {/* KNAPPEN MED EN-OG-EN BOKSTAV EKSPLOSJON */}
         <div className="mt-8 text-center border-t border-white/5 pt-6">
-          <a
-            href="/"
+          <Link
+            to="/"
             className="inline-flex items-center justify-center px-8 py-3 border-2 border-[#57C9D3] hover:bg-[#57C9D3]/5 transition-colors font-['VT323']"
           >
             {buttonText.split("").map((char, index) => {
-              // Hvis det er et mellomrom, bruk et vanlig space-tegn med litt margin
               if (char === " ") {
                 return (
                   <span key={index} className="mx-1">
@@ -148,11 +148,10 @@ export default function About() {
                   </span>
                 );
               }
-
-              // Bokstavene returneres uten ekstra luft
+              // Bokstavene returneres her
               return <SingleLetterParticle key={index} letter={char} />;
             })}
-          </a>
+          </Link>
         </div>
       </motion.div>
     </div>
