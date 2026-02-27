@@ -1,13 +1,13 @@
 
 import { useState, useEffect } from "react";
-
-import GameBoard from "../Mia/components/GameBoard.jsx";
-import useMemoryGame from "../Mia/hooks/useMemoryGame.js";
-import GameHeader from "../Mia/components/GameHeader.jsx";
-import LastGamePanel from "../Mia/components/LastGamePanel.jsx";
-import StartGame from "../Mia/components/StartGame.jsx";
-import GameCompleteOverlay from "../Mia/components/GameCompleteOverlay.jsx";
 import { useNavigate } from "react-router-dom";
+
+import GameBoard from "./components/GameBoard.jsx";
+import useMemoryGame from "./hooks/useMemoryGame.js"; 
+import GameHeader from "./components/GameHeader.jsx"; 
+import LastGamePanel from "./components/LastGamePanel.jsx"; 
+import StartGame from "./components/StartGame.jsx"; 
+import GameCompleteOverlay from "./components/GameCompleteOverlay.jsx";
 
 function MemoryGame() {
   const [nickname, setNickname] = useState("");

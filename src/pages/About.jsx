@@ -96,50 +96,63 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] brick-pattern flex flex-col items-center justify-center p-4">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-3xl bg-black/90 border-4 border-[#D83BD2] p-6 md:p-8 shadow-[0_0_20px_#D83BD2] relative"
       >
         <div className="absolute top-0 left-0 w-full h-1 bg-[#D83BD2] animate-pulse" />
-        
+
         <h1 className="font-['VT323'] text-4xl md:text-6xl text-white text-center mb-6 tracking-tight">
           ABOUT_PLAYLOOP
         </h1>
 
         <div className="font-['VT323'] text-lg md:text-xl text-[#57C9D3] space-y-5 text-left">
-          <p className="leading-tight">> A MULTI-GAME ARCADE PLATFORM BUILT FOR THE NEXT GENERATION OF RETRO GAMERS.</p>
+          <p className="leading-tight">
+            A MULTI-GAME ARCADE PLATFORM BUILT FOR THE NEXT GENERATION OF RETRO
+            GAMERS.
+          </p>
 
           <section className="border-t border-white/10 pt-4">
-            <p className="text-white uppercase tracking-widest mb-3 text-sm opacity-70">[ SYSTEM_DEVELOPERS ]</p>
+            <p className="text-white uppercase tracking-widest mb-3 text-sm opacity-70">
+              [ SYSTEM_DEVELOPERS ]
+            </p>
             <div className="grid grid-cols-1 gap-2 leading-none">
               {developers.map((dev, i) => (
-                <p key={i}>> {dev.name}: <span className="text-white/70 italic">{dev.role}</span></p>
+                <p key={i}>
+                  {" "}
+                  {dev.name}:{" "}
+                  <span className="text-white/70 italic">{dev.role}</span>
+                </p>
               ))}
             </div>
           </section>
 
           <p className="text-white/40 text-lg border-t border-white/10 pt-4 italic">
-            > PlayLoop: Bridging retro vibes and modern performance.
+            {" > "} PlayLoop: Bridging retro vibes and modern performance.
           </p>
         </div>
 
         {/* KNAPPEN MED EN-OG-EN BOKSTAV EKSPLOSJON */}
         <div className="mt-8 text-center border-t border-white/5 pt-6">
-          <a 
-    href="/" 
-    className="inline-flex items-center justify-center px-8 py-3 border-2 border-[#57C9D3] hover:bg-[#57C9D3]/5 transition-colors font-['VT323']"
-  >
-    {buttonText.split("").map((char, index) => {
-      // Hvis det er et mellomrom, bruk et vanlig space-tegn med litt margin
-      if (char === " ") {
-        return <span key={index} className="mx-1">&nbsp;</span>;
-      }
-      
-      // Bokstavene returneres uten ekstra luft
-      return <SingleLetterParticle key={index} letter={char} />;
-    })}
-  </a>
+          <a
+            href="/"
+            className="inline-flex items-center justify-center px-8 py-3 border-2 border-[#57C9D3] hover:bg-[#57C9D3]/5 transition-colors font-['VT323']"
+          >
+            {buttonText.split("").map((char, index) => {
+              // Hvis det er et mellomrom, bruk et vanlig space-tegn med litt margin
+              if (char === " ") {
+                return (
+                  <span key={index} className="mx-1">
+                    &nbsp;
+                  </span>
+                );
+              }
+
+              // Bokstavene returneres uten ekstra luft
+              return <SingleLetterParticle key={index} letter={char} />;
+            })}
+          </a>
         </div>
       </motion.div>
     </div>
