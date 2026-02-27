@@ -129,7 +129,7 @@ export default function About() {
           </section>
 
           <p className="text-white/40 text-lg border-t border-white/10 pt-4 italic">
-            {" > "} PlayLoop: Bridging retro vibes and modern performance.
+            PlayLoop: Bridging retro vibes and modern performance.
           </p>
         </div>
 

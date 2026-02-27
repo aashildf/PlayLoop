@@ -1,12 +1,11 @@
-
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import GameBoard from "./components/GameBoard.jsx";
-import useMemoryGame from "./hooks/useMemoryGame.js"; 
-import GameHeader from "./components/GameHeader.jsx"; 
-import LastGamePanel from "./components/LastGamePanel.jsx"; 
-import StartGame from "./components/StartGame.jsx"; 
+import useMemoryGame from "./hooks/useMemoryGame.js";
+import GameHeader from "./components/GameHeader.jsx";
+import LastGamePanel from "./components/LastGamePanel.jsx";
+import StartGame from "./components/StartGame.jsx";
 import GameCompleteOverlay from "./components/GameCompleteOverlay.jsx";
 
 function MemoryGame() {
