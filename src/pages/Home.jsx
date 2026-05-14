@@ -152,31 +152,28 @@ export default function Home3() {
       },
       {
         id: 3,
-        title: "Super Secret Game ?",
-        image: "images/secret_game.png",
+        title: "Snake",
+        image: "images/snake_card.png",
         description: " ",
         path: "secretgame",
         customTitle: (
           <div
-            className="flex flex-col items-center mt-[-40px]"
-            style={{ color: "#6BCFC2" }}
+            className="flex flex-col items-center mt-26"
+            style={{ color: "#6ED1BD" }}
           >
-            {["Super", "Secret", "Game", "?"].map((word, i) => (
-              <span
-                key={i}
-                className="text-[54px] leading-[0.8] italic font-bold"
-                style={{
-                  color: "#6BCFC2",
-                  textShadow: `
-        1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-        3px 3px 0px #AB6FBE, 
-        5px 5px 0px rgba(0,0,0,0.8)
-      `,
-                }}
-              >
-                {word}
-              </span>
-            ))}
+            <span
+              className="text-[52px] leading-[0.85] italic font-light tracking-normal"
+              style={{
+                textShadow: `
+                  1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+                  2px 2px 0 #144832, -2px -2px 0 #144832, 2px -2px 0 #144832, -2px 2px 0 #144832,
+                  3px 5px 0 #9967A1,
+                  0px 8px 0px rgba(0,0,0,0.4)
+                `,
+              }}
+            >
+              SNAKE
+            </span>
           </div>
         ),
       },
