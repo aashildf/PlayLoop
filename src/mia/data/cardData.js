@@ -1,27 +1,29 @@
+const base = import.meta.env.BASE_URL;
+
 const cardData = [
   {
     id: "alien",
-    image: "/mia-images/alien.jpg",
+    image: `${base}mia-images/alien.jpg`,
   },
   {
     id: "cat",
-    image: "/mia-images/cat.jpg",
+    image: `${base}mia-images/cat.jpg`,
   },
   {
     id: "cowboy",
-    image: "/mia-images/cowboy.jpg",
+    image: `${base}mia-images/cowboy.jpg`,
   },
   {
     id: "unicorn",
-    image: "/mia-images/unicorn.jpg",
+    image: `${base}mia-images/unicorn.jpg`,
   },
   {
     id: "ghost",
-    image: "/mia-images/ghost.jpg",
+    image: `${base}mia-images/ghost.jpg`,
   },
   {
     id: "smiley",
-    image: "/mia-images/smiley.jpg",
+    image: `${base}mia-images/smiley.jpg`,
   },
 ];
 
