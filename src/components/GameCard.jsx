@@ -34,6 +34,8 @@ const imagePath = image?.startsWith("http") ? image : `/PlayLoop/${image}`;
     <div
       className="py-10 lg:py-24 flex justify-center items-center"
       style={{ perspective: "1500px" }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => { x.set(0); y.set(0); setIsHovered(false); }}
     >
       {/* SELVE KORTET */}
       <Link
@@ -43,12 +45,6 @@ const imagePath = image?.startsWith("http") ? image : `/PlayLoop/${image}`;
       >
         <motion.div
           onMouseMove={handleMouseMove}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => {
-            x.set(0);
-            y.set(0);
-            setIsHovered(false);
-          }}
           style={{
             rotateX,
             rotateY,
@@ -96,12 +92,10 @@ const imagePath = image?.startsWith("http") ? image : `/PlayLoop/${image}`;
             style={{
               top: "42%",
               left: "50%",
-              zIndex: 999, // Forsterket z-index
+              zIndex: 999,
               transform: "translateX(-50%) translateZ(120px)",
               transformStyle: "preserve-3d",
-              /* Legg til denne for å tvinge nettleseren til å tegne skyggen separat */
               willChange: "transform",
-              /* Skjuler teksten helt med mindre vi faktisk hovrer med en mus */
               opacity: isHovered ? 1 : 0,
             }}
           >
