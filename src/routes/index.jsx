@@ -15,6 +15,7 @@ import Animations from "../pages/design/Animations";
 import GridSystem from "../pages/design/GridSystem";
 import IconLibrary from "../pages/design/IconLibrary";
 import Highscores from "../pages/Higcscores";
+import SnakeGame from "../ashild/SnakeGame";
 
 export const router = createBrowserRouter(
   [
@@ -28,6 +29,7 @@ export const router = createBrowserRouter(
         { path: "highscores", element: <Highscores /> },
         { path: "memorygame", element: <MemoryGame /> },
         { path: "reactiongame", element: <ReactionGame /> },
+        { path: "secretgame", element: <SnakeGame /> },
         { path: "testpage", element: <TestPage /> },
 
         // ⭐ Designsystem-ruter
