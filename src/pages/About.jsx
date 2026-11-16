@@ -138,7 +138,7 @@ export default function About() {
         <div className="mt-8 text-center border-t border-white/5 pt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center px-8 py-3 border-2 border-[#57C9D3] hover:bg-[#57C9D3]/5 transition-colors font-['VT323']"
+            className="inline-flex items-center justify-center px-3 sm:px-8 py-3 border-2 border-[#57C9D3] hover:bg-[#57C9D3]/5 transition-colors font-['VT323']"
           >
             {buttonText.split("").map((char, index) => {
               if (char === " ") {

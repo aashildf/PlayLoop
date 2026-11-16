@@ -4,7 +4,7 @@ function Card({ card, isFlipped, isMatched, onClick }) {
   return (
     <div
       onClick={onClick}
-      className="w-45 aspect-9/10 perspective-[1000px] cursor-pointer"
+      className="w-[min(11.25rem,calc((100vw-4rem)/4))] aspect-9/10 perspective-[1000px] cursor-pointer"
     >
       <div
         className={`w-full h-full relative transition-transform duration-500 preserve-3d ${

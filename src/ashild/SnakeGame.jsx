@@ -58,7 +58,7 @@ export default function SnakeGame() {
   };
 
   return (
-    <div className="min-h-screen bg-black flex flex-col items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-black flex flex-col items-center justify-center p-4 pt-24 pb-28 md:pt-4 md:pb-4 relative overflow-hidden">
       {/* Retro grid bakgrunn */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -81,7 +81,7 @@ export default function SnakeGame() {
 
       {/* Brett + overlays */}
       <div
-        className="relative z-10"
+        className="relative z-10 touch-none"
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
@@ -155,9 +155,9 @@ export default function SnakeGame() {
       {/* Exit-knapp */}
       <button
         onClick={() => navigate("/#mission-select-full")}
-        className="fixed bottom-10 left-10 z-[100] cursor-pointer group flex flex-col items-center bg-transparent border-none outline-none"
+        className="fixed bottom-4 left-4 md:bottom-10 md:left-10 z-[100] cursor-pointer group flex flex-col items-center bg-transparent border-none outline-none"
       >
-        <div className="w-14 h-14 border-4 border-[#57C9D3] shadow-[0_0_15px_#57C9D3] rounded-full flex items-center justify-center bg-black/80 transition-all duration-300 group-hover:scale-110 group-hover:border-white group-hover:shadow-[0_0_20px_white]">
+        <div className="w-11 h-11 md:w-14 md:h-14 border-4 border-[#57C9D3] shadow-[0_0_15px_#57C9D3] rounded-full flex items-center justify-center bg-black/80 transition-all duration-300 group-hover:scale-110 group-hover:border-white group-hover:shadow-[0_0_20px_white]">
           <span className="text-[#57C9D3] text-2xl font-bold group-hover:text-white transition-colors">
             «
           </span>

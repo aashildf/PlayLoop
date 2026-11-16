@@ -5,7 +5,7 @@ import Header2 from "./components/Header";
 
 function App() {
   return (
-    <div className="relative min-h-screen bg-[#181111] text-white">
+    <div className="relative min-h-screen overflow-x-clip bg-[#181111] text-white">
       <ScrollToTop />
       <div className="crt-overlay " />
 

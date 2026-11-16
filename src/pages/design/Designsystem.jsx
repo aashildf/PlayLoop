@@ -64,7 +64,7 @@ export default function Designsystem() {
           </p>
         </div>
 
-        <pre className="bg-black/40 p-4 rounded-lg text-sm leading-relaxed mt-6">
+        <pre className="overflow-x-auto bg-black/40 p-4 rounded-lg text-sm leading-relaxed mt-6">
           text-xs → text-7xl tracking-wide uppercase font-bold / font-black
         </pre>
       </section>
@@ -77,7 +77,7 @@ export default function Designsystem() {
           3. Spacing (margin & padding)
         </h2>
 
-        <pre className="bg-black/40 p-4 rounded-lg text-sm leading-relaxed">
+        <pre className="overflow-x-auto bg-black/40 p-4 rounded-lg text-sm leading-relaxed">
           Margin: m-0 m-2 m-4 m-6 m-8 m-12 m-16 mt-* mb-* mx-* my-* Padding: p-2
           p-4 p-6 p-8 p-10 p-12 pt-* pb-* px-* py-*
         </pre>
@@ -91,7 +91,7 @@ export default function Designsystem() {
           4. Layout
         </h2>
 
-        <pre className="bg-black/40 p-4 rounded-lg text-sm leading-relaxed">
+        <pre className="overflow-x-auto bg-black/40 p-4 rounded-lg text-sm leading-relaxed">
           w-full max-w-[1400px] h-screen min-h-[200px] relative absolute top-0
           left-0 right-0 overflow-visible overflow-hidden
         </pre>
@@ -107,14 +107,14 @@ export default function Designsystem() {
 
         {/* BUTTON */}
         <h3 className="text-2xl font-bold mb-4 text-[#B7A0B8]">A. Knapp</h3>
-        <pre className="bg-black/40 p-4 rounded-lg text-sm leading-relaxed mb-10">
+        <pre className="overflow-x-auto bg-black/40 p-4 rounded-lg text-sm leading-relaxed mb-10">
           &lt;button className="px-6 py-3 bg-cyan-500 text-black font-bold
           rounded-lg hover:bg-cyan-400 transition"&gt; Klikk meg &lt;/button&gt;
         </pre>
 
         {/* CARD */}
         <h3 className="text-2xl font-bold mb-4 text-[#B7A0B8]">B. Kort</h3>
-        <pre className="bg-black/40 p-4 rounded-lg text-sm leading-relaxed mb-10">
+        <pre className="overflow-x-auto bg-black/40 p-4 rounded-lg text-sm leading-relaxed mb-10">
           &lt;div className="bg-white text-black rounded-xl p-6 shadow-lg"&gt;
           &lt;h3 className="text-2xl font-bold mb-4"&gt;Korttittel&lt;/h3&gt;
           &lt;p className="text-base opacity-80 mb-6"&gt;Tekst inni
@@ -124,14 +124,14 @@ export default function Designsystem() {
 
         {/* BADGE */}
         <h3 className="text-2xl font-bold mb-4 text-[#B7A0B8]">C. Badge</h3>
-        <pre className="bg-black/40 p-4 rounded-lg text-sm leading-relaxed mb-10">
+        <pre className="overflow-x-auto bg-black/40 p-4 rounded-lg text-sm leading-relaxed mb-10">
           &lt;span className="px-3 py-1 bg-[#57C9D3] text-black rounded-full
           text-sm font-bold"&gt; NEW &lt;/span&gt;
         </pre>
 
         {/* OVERLAY */}
         <h3 className="text-2xl font-bold mb-4 text-[#B7A0B8]">D. Overlay</h3>
-        <pre className="bg-black/40 p-4 rounded-lg text-sm leading-relaxed">
+        <pre className="overflow-x-auto bg-black/40 p-4 rounded-lg text-sm leading-relaxed">
           &lt;div className="fixed inset-0 bg-black/60
           backdrop-blur-sm"&gt;&lt;/div&gt;
         </pre>
@@ -145,7 +145,7 @@ export default function Designsystem() {
           6. Animasjoner
         </h2>
 
-        <pre className="bg-black/40 p-4 rounded-lg text-sm leading-relaxed">
+        <pre className="overflow-x-auto bg-black/40 p-4 rounded-lg text-sm leading-relaxed">
           title-boom → hovedtittel-smash shardFly → cyan shards som flyr ut
           flicker → neon blink shadow-pulse → scoreboard glow
         </pre>
@@ -163,7 +163,7 @@ export default function Designsystem() {
         <h3 className="text-2xl font-bold mb-4 text-[#B7A0B8]">
           A. Hero-seksjon
         </h3>
-        <pre className="bg-black/40 p-4 rounded-lg text-sm leading-relaxed mb-10">
+        <pre className="overflow-x-auto bg-black/40 p-4 rounded-lg text-sm leading-relaxed mb-10">
           &lt;section className="w-full py-20 px-6 text-center"&gt; &lt;h1
           className="text-5xl md:text-7xl font-neon tracking-tight mb-6"&gt;
           Hero Title &lt;/h1&gt; &lt;p className="text-xl md:text-2xl opacity-80
@@ -175,7 +175,7 @@ export default function Designsystem() {
         <h3 className="text-2xl font-bold mb-4 text-[#B7A0B8]">
           B. Grid med kort
         </h3>
-        <pre className="bg-black/40 p-4 rounded-lg text-sm leading-relaxed">
+        <pre className="overflow-x-auto bg-black/40 p-4 rounded-lg text-sm leading-relaxed">
           &lt;div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3
           gap-8"&gt; ...cards... &lt;/div&gt;
         </pre>
